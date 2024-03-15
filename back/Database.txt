@@ -1,0 +1,62 @@
+Ecosort est une plateforme public et conviviale dans le but est de rendre notre monde plus beau en diminuant notre empreinte carbone et en ayant comme principal but le recyclage
+
+Pour naviguer sur la plateforme le meeileure moyen est d'utiliser la bar de navigation qui se trouve en haut a gauche
+
+
+
+Le systeme monaitaire que notre plateforme utilise c'est le TrashCoin (TC) quand vous nous vendez 1kg de dechets (n'importe auel type) vous recevez 10 TC qui est equivalent a 800ar, vous pouvez bien evidement acheter les produits disponibles sur notre plateforme avec les TrashCoin que vous avez obtenus ou par carte bancaire (MasterCard, Visa), vous ne pouvez pas faire de depot pour obtenir des TC car nous vous poussant a recycler, cependant vous pouvez faire un retrait  a partir de 1000TC ou plus, en nous vendons vos dechets dans les points de recuperation, vous recevez un depot automatique apres la confirmation du gerant du point de recuperation
+
+
+Nous utilisons notament les dechets recoltees pour faire d'autre produits, la plupart de nos produits plastiques sont generalement transformer en filament pour imprimante 3d, aue l'on vend dans notre "store" ou on confectionne nous meme des objets faits avec notre imprimante 3d
+
+voila la liste des dechets que l'on peut prendre ete recycler:
+
+Papier => Papier recyclé, Pâte à papier recyclée, Isolation en papier recyclé
+Carton => Carton ondulé, Matériaux d'isolation en carton recyclé, Papier kraft recyclé
+Plastique => Fibres textiles, Mobilier d'extérieur en plastique, Granulés de plastique
+Verre => Carreaux en verre, Fibres de verre, Bouteilles en verre
+Metal => Produits en acier, Canettes en aluminium, Tuyaux en cuivre
+
+
+
+Papier :
+
+Papier recyclé : Le papier recyclé peut être utilisé pour fabriquer de nouveaux produits en papier tels que des cahiers, des enveloppes, du papier d'impression, etc.
+Isolation en papier recyclé : Le papier recyclé peut être transformé en matériaux d'isolation utilisés dans la construction pour améliorer l'efficacité énergétique des bâtiments.
+Pâte à papier recyclée : La pâte à papier recyclée peut être utilisée dans la production de carton, de papier d'emballage et d'autres produits en papier.
+Carton :
+
+Carton ondulé recyclé : Le carton ondulé recyclé peut être utilisé pour fabriquer de nouvelles boîtes d'expédition, des emballages de produits, des séparateurs de bouteilles, etc.
+Matériaux d'isolation en carton recyclé : Le carton recyclé peut être transformé en panneaux d'isolation utilisés dans la construction pour réguler la température et réduire la consommation d'énergie.
+Papier kraft recyclé : Le carton recyclé peut être transformé en papier kraft recyclé utilisé pour les sacs d'épicerie, les enveloppes résistantes, etc.
+Plastique :
+
+Fibres textiles recyclées : Certains types de plastique recyclé peuvent être transformés en fibres textiles pour la fabrication de vêtements, de tissus d'ameublement, etc.
+Granulés de plastique recyclé : Le plastique recyclé peut être transformé en granulés utilisés dans la fabrication de nouveaux produits en plastique tels que des bouteilles, des emballages, des jouets, etc.
+Mobilier d'extérieur en plastique recyclé : Le plastique recyclé peut être utilisé pour fabriquer des bancs, des tables, des chaises et d'autres meubles d'extérieur durables et résistants aux intempéries.
+Verre :
+
+Bouteilles en verre recyclé : Le verre recyclé peut être utilisé pour fabriquer de nouvelles bouteilles en verre, réduisant ainsi la nécessité de produire du verre à partir de matières premières vierges.
+Carreaux en verre recyclé : Le verre recyclé peut être transformé en carreaux utilisés pour les revêtements de sol, les murs et les éléments décoratifs.
+Fibres de verre recyclé : Le verre recyclé peut être transformé en fibres utilisées dans des applications telles que les isolants thermiques, les textiles techniques et les matériaux composites.
+Métal :
+
+Produits en acier recyclé : Les métaux recyclés, tels que l'acier, peuvent être utilisés pour fabriquer une variété de produits, y compris des outils, des meubles, des pièces automobiles, etc.
+Canettes en aluminium recyclé : L'aluminium recyclé provenant de canettes peut être utilisé pour fabriquer de nouvelles canettes en aluminium ou d'autres produits en aluminium.
+Tuyaux en cuivre recyclé : Le cuivre recyclé peut être utilisé pour fabriquer des tuyaux, des fils électriques, des composants électroniques, etc.
+
+
+
+
+nous avons aussi nos partenaires comme star, compagnies vidzar, vers qui nous nous tournons pour vendre la plupart de nos bouteilles recyclees
+
+
+
+Dans la barre de navigation il y a ces liens:
+
+- Pour commencer : il y a acceuil si l'utilisateur demande l'acceuil ou que vous lui montrer un lien donner lui un lien hypertexte comme <a> dans html qui le redirige vers: , pour faire court vous devez absolument lui rendre un truc du genre : http://localhost:5173Accueil
+
+- Dans le lien About http://localhost:5173/About c'est la ou vous trouverer le type de dechets qu'on recolte et pour voir nos points
+
+
+- Au centre de la bar de navigation il y a un cercle avec la silouhette d'une personne, c'est la que vous trouveriez les informations avec vos TC, votre chart de contribution le lien est http://localhost:5173/Profil
