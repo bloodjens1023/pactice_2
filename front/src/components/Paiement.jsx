@@ -3,7 +3,7 @@ import img from '../assets/img/chip.png'
 const Paiement = () => {
 
   return (
-    <div class="container" style={{width:"100vw", display:'flex',flexDirection:"column", alignItems:"center", justifyContent:"center"}}>
+    <div class="containerss" style={{width:"100vw", display:'flex',flexDirection:"column", alignItems:"center", justifyContent:"center"}}>
 
     <div class="card-container">
 
