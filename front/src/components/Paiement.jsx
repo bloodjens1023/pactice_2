@@ -1,58 +1,69 @@
 import React, { useState } from 'react';
 import img from '../assets/img/chip.png'
+import logo from '../assets/img/logo.png'
+import { motion } from 'framer-motion';
 const Paiement = () => {
-
+  const [numC, setNumC] = useState('')
+  const [nomC, setNomC] = useState('')
+  const [mois, setMois] = useState('')
+  const [anne, setAnnee] = useState('')
   return (
-    <div class="containerss" style={{width:"100vw", display:'flex',flexDirection:"column", alignItems:"center", justifyContent:"center"}}>
+    <div className="containerss" style={{ padding:"20px",width:"100vw", display:'flex',flexDirection:"column", alignItems:"center", justifyContent:"center"}}>
 
-    <div class="card-container">
+    <motion.div className="card-container"
+      whileHover={{scale:1.1}}
+      transition={{ duration: 0.5 }}
+    >
 
-        <div class="front">
-            <div class="image">
-                <img src={img} alt=""/>
-                <img src="image/visa.png" alt=""/>
+        <div className="front">
+            <div className="image">
+                <motion.img src={img} alt=""/>
+                <motion.img src={logo} alt="" style={{width:"60px", height:"60px", filter:"drop-shadow(0px 0px 5px orange)"}}
+                  animate={{scale:1.2}}
+                  transition={{ repeat: Infinity, duration: 1, repeatType: "reverse",}}
+                />
             </div>
-            <div class="card-number-box">################</div>
-            <div class="flexbox">
-                <div class="box">
-                    <span>card holder</span>
-                    <div class="card-holder-name">full name</div>
+            <div className="card-number-box" >{numC}</div>
+            <div className="flexbox">
+                <div className="box">
+                    <span>Propriétaire du carte</span>
+                    <div className="card-holder-name">{nomC}</div>
                 </div>
-                <div class="box">
+                <div className="box">
                     <span>expires</span>
-                    <div class="expiration">
-                        <span class="exp-month">mm</span>
-                        <span class="exp-year">yy</span>
+                    <div className="expiration">
+                        <span className="exp-month">{mois}</span>
+                        <span className="exp-year">/{anne}</span>
                     </div>
                 </div>
             </div>
         </div>
 
-        <div class="back">
-            <div class="stripe"></div>
-            <div class="box">
+        <div className="back">
+            <div className="stripe"></div>
+            <div className="box">
                 <span>cvv</span>
-                <div class="cvv-box"></div>
-                <img src="image/visa.png" alt=""/>
+                <div className="cvv-box"></div>
+                <img src={logo} alt=""/>
             </div>
         </div>
 
-    </div>
+    </motion.div>
 
     <form action="">
-        <div class="inputBox">
+        <div className="inputBox">
             <span>card number</span>
-            <input type="text" maxlength="16" class="card-number-input"/>
+            <input type="text" maxLength="16" className="card-number-input" onChange={e => setNumC(e.target.value)}/>
         </div>
-        <div class="inputBox">
-            <span>card holder</span>
-            <input type="text" class="card-holder-input"/>
+        <div className="inputBox">
+            <span>Propriétaire du carte</span>
+            <input type="text" className="card-holder-input" onChange={e => setNomC(e.target.value)}/>
         </div>
-        <div class="flexbox">
-            <div class="inputBox">
+        <div className="flexbox">
+            <div className="inputBox">
                 <span>expiration mm</span>
-                <select name="" id="" class="month-input">
-                    <option value="month" selected disabled>month</option>
+                <select name="" id="" className="month-input" onChange={e => setMois(e.target.value)}>
+                    <option value="month" defaultChecked disabled>month</option>
                     <option value="01">01</option>
                     <option value="02">02</option>
                     <option value="03">03</option>
@@ -67,10 +78,10 @@ const Paiement = () => {
                     <option value="12">12</option>
                 </select>
             </div>
-            <div class="inputBox">
+            <div className="inputBox">
                 <span>expiration yy</span>
-                <select name="" id="" class="year-input">
-                    <option value="year" selected disabled>year</option>
+                <select name="" id="" className="year-input" onChange={e => setAnnee(e.target.value)}> 
+                    <option value="year" defaultChecked disabled>year</option>
                     <option value="2024">2024</option>
                     <option value="2025">2025</option>
                     <option value="2026">2026</option>
@@ -80,12 +91,21 @@ const Paiement = () => {
                     <option value="2030">2030</option>
                 </select>
             </div>
-            <div class="inputBox">
-                <span>cvv</span>
-                <input type="text" maxlength="4" class="cvv-input"/>
-            </div>
         </div>
-        <input type="submit" value="submit" class="submit-btn"/>
+        <br />
+        <button className='bt'>
+          <div className="svg-wrapper-1">
+            <div className="svg-wrapper">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
+                <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0z"/>
+                <path d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4zM2.5 3h11V2h-11z"/>
+              </svg>
+            </div>
+          </div>
+          <span>Valider l'achat</span>
+        </button>
+
     </form>
 
 </div>    
