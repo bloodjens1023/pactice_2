@@ -1,0 +1,38 @@
+
+  
+  .vertical-nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 200px;
+    background-color: #153330;
+  }
+  
+  .vertical-nav ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .vertical-nav ul li {
+    padding: 10px;
+  }
+  
+  .vertical-nav ul li .nav-link {
+    display: block;
+    color: #FFFFFF;
+    text-decoration: none;
+  }
+  
+  .vertical-nav ul li .nav-link:hover {
+    background-color: #F4F9FF;
+    color: black;
+  }
+
+  .vertical-nav ul li .nav-link:active {
+    background-color: #B8B3E7;  
+    color:#F4F9FF;
+    border-radius: 30px;
+  }
+  
