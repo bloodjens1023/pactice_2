@@ -18,6 +18,19 @@ const db = mysql.createConnection(
   }
 )
 
+app.get('/api/listeProduit', (req, res) =>{
+  const sql = "SELECT * FROM produits";
+  db.query(sql, (err, result) => {
+    if (err) {
+      console.error(err); // Affichez l'erreur dans la console
+      return res.status(500).json("Erreur de connexion"); // Retournez une réponse avec un code d'erreur 500
+    }
+    return res.json(result);
+  });
+})
+
+
+
 app.post('/api/inscription', (req, res) => {
   console.log(req.body);
   const sql = "INSERT INTO user (nom_user, prenom_user, email, mdp_user) VALUES (?, ?, ?, ?)";

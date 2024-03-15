@@ -6,8 +6,7 @@ import image3 from "../assets/img/caroussel/donut3.jpg";
 
 export default function Sidebar() {
   return (
-    <>
-      <aside>
+    <aside>
         <div className="p-5">
           <Carousel>
             <Carousel.Item>
@@ -27,7 +26,6 @@ export default function Sidebar() {
             </Carousel.Item>
           </Carousel>
         </div>
-      </aside>
-    </>
+    </aside>
   );
 }
