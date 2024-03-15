@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-
+import img from '../assets/img/chip.png'
 const Paiement = () => {
 
   return (
@@ -9,7 +9,7 @@ const Paiement = () => {
 
         <div class="front">
             <div class="image">
-                <img src="image/chip.png" alt=""/>
+                <img src={img} alt=""/>
                 <img src="image/visa.png" alt=""/>
             </div>
             <div class="card-number-box">################</div>
