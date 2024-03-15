@@ -1,1 +1,15 @@
-//page pour les produits avec les compomets side-bars et liste produit
+
+import SideBar from "./SideBar";
+import React from "react";
+import CardProduit from "./CardProduit";
+import '../assets/css/produit.css'
+
+
+export default function Produits() {
+  return (
+    <>
+    <CardProduit/>
+      <SideBar/>
+    </>
+  );
+}
