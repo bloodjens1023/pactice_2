@@ -5,6 +5,7 @@ import Inscription from './components/Inscription';
 import Accueil from './components/Accueil';
 import Paiement from './components/Paiement';
 import Loading from './components/Loading';
+import ValidPaiement from './components/ValidPaiement';
 
 
 
@@ -17,6 +18,7 @@ function App() {
       <Route path="/Inscription" Component={Inscription} />
       <Route path="/Paiement" Component={Paiement} />
       <Route path="/Loading" Component={Loading} />
+      <Route path="/ValidPaiement" Component={ValidPaiement} />
     </Routes>
   )
 }

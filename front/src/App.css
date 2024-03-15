@@ -1,6 +1,8 @@
 @import url("./assets/css/bootstrap.min.css");
 @import url('./assets/css/Connexion.css');
 @import url('./assets/css/Chargement.css');
+@import url('./assets/css/Paiement.css');
+@import url('./assets/css/ValidPaiement.css');
 
 .page-enter {
     opacity: 0;
