@@ -6,6 +6,7 @@ import Accueil from './components/Accueil';
 import Paiement from './components/Paiement';
 import Loading from './components/Loading';
 import ValidPaiement from './components/ValidPaiement';
+import Produits from './components/Produit';
 
 
 
@@ -19,6 +20,7 @@ function App() {
       <Route path="/Paiement" Component={Paiement} />
       <Route path="/Loading" Component={Loading} />
       <Route path="/ValidPaiement" Component={ValidPaiement} />
+      <Route path="/Produits" Component={Produits} />
     </Routes>
   )
 }

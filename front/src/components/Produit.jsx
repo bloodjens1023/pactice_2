@@ -8,7 +8,6 @@ import '../assets/css/produit.css'
 export default function Produits() {
   return (
     <>
-    <CardProduit/>
       <SideBar/>
     </>
   );
