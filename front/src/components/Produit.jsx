@@ -6,7 +6,6 @@ import axios from "axios";
 import { useState, useEffect } from "react";
 import CardProduit from "./CardProduit";
 import  Nav from "./Nav";
-import Headers from "./Headers";
 import Prof from "./Prof";
 
 

@@ -1,3 +1,4 @@
+import img from '../assets/img/logo.png';
 function Prof() {
     return ( 
         <nav class="navbar navbar-expand bg-white shadow mb-4 topbar static-top navbar-light">
@@ -27,6 +28,8 @@ function Prof() {
                 </div>
             </label>
                 <ul class="navbar-nav flex-nowrap ms-auto">
+                   
+                    
                     <li class="nav-item dropdown no-arrow mx-1">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-bell"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"/></svg>
 
@@ -35,7 +38,10 @@ function Prof() {
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-circle-user-round"><path d="M18 20a6 6 0 0 0-12 0"/><circle cx="12" cy="10" r="4"/><circle cx="12" cy="12" r="10"/></svg>
 
                     </li>
-                    <div class="d-none d-sm-block topbar-divider"></div>
+                    <li class="nav-item dropdown no-arrow mx-1" style={{display:"flex", alignItems:"center", justifyContent:"center"}}>
+                        <img src={img} alt="" srcset="" width={30} />700 Tc
+                    </li>
+                 
                 </ul>
             </div>
         </nav>

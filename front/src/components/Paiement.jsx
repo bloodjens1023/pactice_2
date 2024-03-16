@@ -2,18 +2,46 @@ import React, { useState } from 'react';
 import img from '../assets/img/chip.png'
 import logo from '../assets/img/logo.png'
 import { motion } from 'framer-motion';
-const Paiement = () => {
-  const [numC, setNumC] = useState('')
-  const [nomC, setNomC] = useState('')
-  const [mois, setMois] = useState('')
-  const [anne, setAnnee] = useState('')
-  return (
-    <div className="containerss" style={{ padding:"20px",width:"100vw", display:'flex',flexDirection:"column", alignItems:"center", justifyContent:"center"}}>
+import ValidPaiement from './ValidPaiement';
+import { useNavigate } from 'react-router-dom';
 
+const Paiement = () => {
+  const [numC, setNumC] = useState(' ')
+  const [nomC, setNomC] = useState(' ')
+  const [mois, setMois] = useState(' ')
+  const [anne, setAnnee] = useState(' ')
+  const [visible, setVisible] = useState(false)
+  const navigate = useNavigate();  
+
+  function handleChange(e) {
+    e.preventDefault()
+    
+    if (numC !== '') {
+        setVisible(true);
+        const intervalId = setInterval(() => {
+            
+            clearInterval(intervalId); // Arrête l'intervalle après 1000 millisecondes
+            navigate('/profil'); // Navigue vers '/profil' après 1000 millisecondes
+        }, 1000);
+    }
+}
+
+
+
+  return (
+    <motion.div className="containerss" style={{ padding:"20px",width:"100vw", display:'flex',flexDirection:"column", alignItems:"center", justifyContent:"center"}}
+        initial={{opacity:0}}
+        animate={{opacity:1}}
+        transition={{ duration: 0.8 }}
+    >
+        {visible && (
+                   <ValidPaiement/>
+                )}
     <motion.div className="card-container"
       whileHover={{scale:1.1}}
       transition={{ duration: 0.5 }}
     >
+        
 
         <div className="front">
             <div className="image">
@@ -39,18 +67,14 @@ const Paiement = () => {
             </div>
         </div>
 
-        <div className="back">
-            <div className="stripe"></div>
-            <div className="box">
-                <span>cvv</span>
-                <div className="cvv-box"></div>
-                <img src={logo} alt=""/>
-            </div>
-        </div>
+      
 
     </motion.div>
+    {!visible && (
+                   
+                
 
-    <form action="">
+    <form onSubmit={handleChange}>
         <div className="inputBox">
             <span>card number</span>
             <input type="text" maxLength="16" className="card-number-input" onChange={e => setNumC(e.target.value)}/>
@@ -93,7 +117,7 @@ const Paiement = () => {
             </div>
         </div>
         <br />
-        <button className='bt'>
+        <button className='bt' >
           <div className="svg-wrapper-1">
             <div className="svg-wrapper">
               
@@ -107,8 +131,9 @@ const Paiement = () => {
         </button>
 
     </form>
+    )}
 
-</div>    
+</motion.div>    
 
   );
 };

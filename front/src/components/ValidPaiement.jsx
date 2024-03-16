@@ -13,7 +13,7 @@ function ValidPaiement() {
         return () => clearTimeout(timer);
     }, []);
     return ( 
-        <div className="containers">
+        <div className="containers" style={{flex:1, position:"absolute", top:"40%", left:"0%"}}>
           
             <motion.div >
                 {isVisible && (

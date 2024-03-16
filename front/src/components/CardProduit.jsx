@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 //card produits
 function CardProduit({produits}) {
     return ( 
@@ -30,7 +32,7 @@ function CardProduit({produits}) {
                     </div>
                 </div>
 
-                <div className="button-container">
+                <Link className="button-container" to="/paiement">
                     <button className="buy-button button">Acheter</button>
                     <button className="cart-button button">
                         <svg viewBox="0 0 27.97 25.074" xmlns="http://www.w3.org/2000/svg">
@@ -38,7 +40,7 @@ function CardProduit({produits}) {
                         </svg>
 
                     </button>
-                </div>
+                </Link>
             </div>
      );
 }
