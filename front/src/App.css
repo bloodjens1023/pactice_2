@@ -5,6 +5,12 @@
 @import url('./assets/css/ValidPaiement.css');
 @import url('./assets/css/navbar.css');
 
+
+body{
+  width: 97vw;
+}
+
+
 .page-enter {
     opacity: 0;
     transform: translateY(-20px);
