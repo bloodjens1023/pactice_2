@@ -1,5 +1,7 @@
 function Vendre() {
-    return (  );
+    return ( 
+        <></>
+     );
 }
 
 export default Vendre;
