@@ -2,38 +2,39 @@
   
   .vertical-nav {
     position: fixed;
-    top: 0;
-    left: 0;
     height: 100%;
-    width: 200px;
-    background-color: #153330;
+    width: 230px;
+    background: radial-gradient(#285752, #153330);
+  }
+  @media (max-width: 800px){
+    .vertical-nav {
+      display: none;
+    }
   }
   
   .vertical-nav ul {
     list-style-type: none;
-    padding: 0;
-    margin: 0;
   }
   
   .vertical-nav ul li {
-    padding: 10px;
+    padding: 5px;
+    font-size: 1.2em;
+    
   }
   
   .vertical-nav ul li .nav-link {
     display: block;
     color: #FFFFFF;
     text-decoration: none;
+    transition: 0.2s all linear;
   }
   
   .vertical-nav ul li .nav-link:hover {
-    background-color: #F4F9FF;
-    color: black;
+    background-color: white;
+    border-radius: 0px 30px 0px 0px;
+    color:black;
   }
 
-  .vertical-nav ul li .nav-link:active {
-    background-color: #B8B3E7;  
-    color:#F4F9FF;
-  }
   
 
 

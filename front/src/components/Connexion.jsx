@@ -5,12 +5,15 @@ function Connexion() {
 
     return ( 
         <>
-            <Headers/>
+            
             <motion.section className="background-radial-gradient overflow-hidden"
-                    initial={{opacity:0 }}
-                    animate={{opacity:1 }}
-           
-                transition={{duration: 1}}
+                     variants={{
+                        hidden:{opacity: 0, y:75},
+                        visible:{opacity: 1, y:0}
+                     }}
+                     initial = "hidden"
+                     animate="visible"
+                     transition={{duration: 0.5, delay: 0.25}}
             >
             <div className="container px-4 py-5 px-md-5 text-center text-lg-start my-5">
                 <div className="row gx-lg-5 align-items-center mb-5">
@@ -86,8 +89,8 @@ function Connexion() {
                             </svg>
                             </motion.button>
                         </div>
-                        <center>
-                            <Link to="/Inscription" ><hr /> Je ne suis pas encore membre</Link>
+                        <center >
+                            <Link to="/Inscription" style={{color:"white"}}><hr /> Je ne suis pas encore membre</Link>
                         </center>
                         </form>
                     </div>

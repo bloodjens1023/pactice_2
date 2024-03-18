@@ -29,7 +29,40 @@ app.get('/api/listeProduit', (req, res) =>{
   });
 })
 
+app.get('/api/listePanier', (req, res) =>{
+  const sql = "SELECT *,COUNT(p.id_produit) as nb FROM `panier` as ap INNER JOIN produits as p WHERE ap.id_produit = p.id_produit GROUP BY (p.nom_produit)";
+  db.query(sql, (err, result) => {
+    if (err) {
+      console.error(err); // Affichez l'erreur dans la console
+      return res.status(500).json("Erreur de connexion"); // Retournez une réponse avec un code d'erreur 500
+    }
+    return res.json(result);
+  });
+})
+app.get('/api/supprimerPanier', (req, res) =>{
+  const sql = "delete from panier";
+  db.query(sql, (err, result) => {
+    if (err) {
+      console.error(err); // Affichez l'erreur dans la console
+      return res.status(500).json("Erreur de connexion"); // Retournez une réponse avec un code d'erreur 500
+    }
+    return res.json(result);
+  });
+})
 
+app.post('/api/ajoutPanier', (req, res) => {
+  console.log(req.e);
+  const sql = "INSERT INTO `panier`(`id_produit`, `description_panier`) VALUES (?,?)";
+  const values = [req.body.e, req.body.f];
+
+  db.query(sql, values, (err, result) => {
+    if (err) {
+      console.error(err); // Affichez l'erreur dans la console
+      return res.status(500).json("Erreur de connexion"); // Retournez une réponse avec un code d'erreur 500
+    }
+    return res.json("insertion panier avec success");
+  });
+});
 
 app.post('/api/inscription', (req, res) => {
   console.log(req.body);

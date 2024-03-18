@@ -8,6 +8,8 @@ import Loading from './components/Loading';
 import ValidPaiement from './components/ValidPaiement';
 import Produits from './components/Produit';
 import Profil from './components/Profil';
+import Paniers from './components/Paniers';
+import Cook from './components/Cook';
 
 
 
@@ -23,6 +25,9 @@ function App() {
       <Route path="/ValidPaiement" Component={ValidPaiement} />
       <Route path="/Produits" Component={Produits} />
       <Route path="/Profil" Component={Profil} />
+      <Route path="/Paniers" Component={Paniers} />
+      <Route path="/Cookies" Component={Cook} />
+
     </Routes>
   )
 }

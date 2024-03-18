@@ -19,6 +19,7 @@ function Inscription() {
                 setTimeout(function() {
                     navigate('/Loading');
                 },1000) 
+                
                  
             }
         
@@ -28,12 +29,15 @@ function Inscription() {
     }
     return ( 
         <>
-            <Headers/>
+         
             <motion.section className="background-radial-gradient overflow-hidden"
-                 initial={{opacity:0 }}
-                 animate={{opacity:1 }}
-           
-                transition={{duration: 1}}
+                 variants={{
+                    hidden:{opacity: 0, y:75},
+                    visible:{opacity: 1, y:0}
+                 }}
+                 initial = "hidden"
+                 animate="visible"
+                 transition={{duration: 0.5, delay: 0.25}}
             >
             <div className="container px-4 py-5 px-md-5 text-center text-lg-start my-5">
                 <div className="row gx-lg-5 align-items-center mb-5">
@@ -92,7 +96,9 @@ function Inscription() {
 
                         
                         <center>
-                                <motion.button type="submit" className="btn btn-secondary  mb-4" style={{width:"300px"}}  whileHover={{scale:1.1}} >
+                                <motion.button type="submit" className="   mb-4" style={{width:"300px", background:"#E4E6F1",
+                                color:"dark", height:"50px", fontSize:"1.5em", border:"none", borderRadius:"30px"
+                            }}  whileHover={{scale:1.1}}>
                                     S'inscrire
                                 </motion.button>
                         </center>

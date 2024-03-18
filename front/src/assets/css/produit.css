@@ -239,6 +239,7 @@
   
   .cards .button-container .button:hover {
 	background: #F96C27 ;
+	transition: 0.5s all ease-in-out;
   }
   
   .cards .button-container .buy-button {
