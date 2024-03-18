@@ -10,6 +10,9 @@ import Produits from './components/Produit';
 import Profil from './components/Profil';
 import Paniers from './components/Paniers';
 import Cook from './components/Cook';
+import Dashboard from './components/Dashboard';
+import Vendre from './components/Vendre';
+import Evenement from './components/Evenement';
 
 
 
@@ -27,6 +30,11 @@ function App() {
       <Route path="/Profil" Component={Profil} />
       <Route path="/Paniers" Component={Paniers} />
       <Route path="/Cookies" Component={Cook} />
+      <Route path="/Dash" Component={Dashboard} />
+      <Route path="/Vendre" Component={Vendre} />
+      <Route path="/Evenement" Component={Evenement} />
+
+      
 
     </Routes>
   )
