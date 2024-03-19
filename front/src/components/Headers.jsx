@@ -1,13 +1,21 @@
 import { motion } from "framer-motion";
 import React, {useState} from "react";
 import { Link } from "react-router-dom";
+
 function Headers() {
     return ( 
         <>
             <div style={{paddingTop:"10px", width:"100%", height:"60px", backgroundColor:"#173734",position:"fixed", top:0, left:0, display:"flex",alignItems:"center", justifyContent:"center", color:"white", zIndex:10}}>
                 <h3 style={{position:"absolute", top:0, left:0, margin:"15px"}}>ECOSORT</h3>
-                <ul style={{display:"flex", gap:"20px", textDecoration:"none", listStyle:"none"}}>
+                
+
+
+
                     
+                
+                <ul style={{display:"flex", gap:"20px", textDecoration:"none", listStyle:"none"}}>
+                
+                
                 <motion.li className="nav-item" whileHover={{ scale:1.2, }}>  
                     <Link className="nav-link" to='/Produits' style={{display: "flex", alignItems: "start", gap:"4px"}}>
                     <svg className="bi bi-shop" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16" style={{fontSize:"25px", marginRight:"10px"}}>
@@ -32,7 +40,7 @@ function Headers() {
                             <path d="M5.757 1.071a.5.5 0 0 1 .172.686L3.383 6h9.234L10.07 1.757a.5.5 0 1 1 .858-.514L13.783 6H15a1 1 0 0 1 1 1v1a1 1 0 0 1-1 1v4.5a2.5 2.5 0 0 1-2.5 2.5h-9A2.5 2.5 0 0 1 1 13.5V9a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h1.217L5.07 1.243a.5.5 0 0 1 .686-.172zM2 9v4.5A1.5 1.5 0 0 0 3.5 15h9a1.5 1.5 0 0 0 1.5-1.5V9zM1 7v1h14V7zm3 3a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-1 0v-3A.5.5 0 0 1 4 10m2 0a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-1 0v-3A.5.5 0 0 1 6 10m2 0a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-1 0v-3A.5.5 0 0 1 8 10m2 0a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-1 0v-3a.5.5 0 0 1 .5-.5m2 0a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-1 0v-3a.5.5 0 0 1 .5-.5"></path>
                         </svg>
                         </div>
-                      
+                        
                     </Link>
                 </motion.li>
                 <motion.li className="nav-item" whileHover={{ scale:1.2, }}>  
@@ -50,6 +58,7 @@ function Headers() {
                         <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" class="bi bi-bar-chart-fill" viewBox="0 0 16 16" style={{fontSize:"25px", marginRight:"10px"}}>
                          <path d="M1 11a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1zm5-4a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v7a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1zm5-5a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1h-2a1 1 0 0 1-1-1z"/>
                         </svg>
+                        
                         </div>
                        
                     </Link>
@@ -60,12 +69,16 @@ function Headers() {
                         <svg className="bi bi-person-vcard-fill" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16" style={{fontSize:"25px", marginRight:"10px"}}>
                             <path d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2zm9 1.5a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 0-1h-4a.5.5 0 0 0-.5.5M9 8a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 0-1h-4A.5.5 0 0 0 9 8m1 2.5a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 0-1h-3a.5.5 0 0 0-.5.5m-1 2C9 10.567 7.21 9 5 9c-2.086 0-3.8 1.398-3.984 3.181A1 1 0 0 0 2 13h6.96c.026-.163.04-.33.04-.5M7 6a2 2 0 1 0-4 0 2 2 0 0 0 4 0"></path>
                         </svg>
+                        
+
                         </div>
                        
                     </Link>
                 </motion.li>
                 </ul>
+                
             </div>
+            
         </>
      );
 }

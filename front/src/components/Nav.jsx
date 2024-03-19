@@ -1,6 +1,17 @@
 import { Link } from "react-router-dom";
 import Badge from 'react-bootstrap/Badge';
-function Nav() {
+import React,{useState, useEffect,useRef } from "react";
+
+function Nav(props) {
+    const prevPropsRef = useRef();
+    const [pan,setPan] = useState(0)
+    useEffect(() => {
+        if (prevPropsRef.current && prevPropsRef.current.someProp !== props.someProp) {
+          setPan(pan+1)
+        }
+        prevPropsRef.current = props;
+      });
+   
     return (
         <>
         <div className=" vertical-nav" style={{ borderRadius: "0px 0px 40px" }}>
@@ -45,7 +56,7 @@ function Nav() {
                         <div style={{ marginTop: '2px' }}>
                             Votre paniers
                            
-                           
+                            <Badge pill bg="secondary" style={{fontSize:"10px", verticalAlign:"top"}}>{pan}</Badge>
                         </div>
                     </Link>
                 </li>
