@@ -1,7 +1,7 @@
 import { Link,useNavigate  } from "react-router-dom";
-import Headers from "./Headers";
 import { motion } from "framer-motion"
-import { useState } from "react";
+import Cookies from "js-cookie";
+import { useState,useEffect } from "react";
 import axios from "axios"
 function Inscription() {
     const[nom, setNom] = useState("")
@@ -16,9 +16,13 @@ function Inscription() {
         .then(res =>{
             console.log(res.data)
             if(res.data =="Connecté"){
+                Cookies.set("user", email, { expires: 7, path: "/" });
+                
                 setTimeout(function() {
+                   
                     navigate('/Loading');
-                },1000) 
+                },1000)
+                
                 
                  
             }

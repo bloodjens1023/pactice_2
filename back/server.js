@@ -29,6 +29,24 @@ app.get('/api/listeProduit', (req, res) =>{
   });
 })
 
+
+app.post('/api/listeUsr', (req, res) =>{
+  const sql = "SELECT * FROM user as u inner join carte as c where u.email=c.user_proprietaire and u.email = ? limit 1";
+  const values = [req.body.email];
+  console.log(sql);
+  db.query(sql, values, (err, result) => {
+    if (err) {
+      console.error(err); // Affichez l'erreur dans la console
+      return res.status(500).json("Erreur de connexion"); // Retournez une réponse avec un code d'erreur 500
+    }
+    return res.json(result);
+  });
+})
+
+
+
+
+
 app.get('/api/listePanier', (req, res) =>{
   const sql = "SELECT *,COUNT(p.id_produit) as nb FROM `panier` as ap INNER JOIN produits as p WHERE ap.id_produit = p.id_produit GROUP BY (p.nom_produit)";
   db.query(sql, (err, result) => {
@@ -74,10 +92,22 @@ app.post('/api/inscription', (req, res) => {
       console.error(err); // Affichez l'erreur dans la console
       return res.status(500).json("Erreur de connexion"); // Retournez une réponse avec un code d'erreur 500
     }
-    return res.json("Connecté");
+    creationCarte(req.body.email,res)
   });
 });
 
+function creationCarte(email,res) {
+  const sql = "INSERT INTO carte (numero_carte, validite, user_proprietaire) values (?,?,?);";
+  const values = ['123123123','11/24',email];
+
+  db.query(sql, values, (err, result) => {
+    if (err) {
+      console.error(err); // Affichez l'erreur dans la console
+      return res.status(500).json("Erreur de connexion"); // Retournez une réponse avec un code d'erreur 500
+    }
+    return res.json("Connecté");
+  });
+}
 
 
 app.get('/liste', async (req, res) => {

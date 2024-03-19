@@ -3,14 +3,35 @@ import Nav from "./Nav";
 import img from "../assets/img/profil.jpg";
 import { motion } from "framer-motion";
 import Load from "./Load";
-import React,{ useState } from "react";
+import React,{ useState,useEffect } from "react";
 import { Link } from "react-router-dom";
+import Cookies from "js-cookie";
+import axios from "axios";
 
 function Profil() {
     const [charge, setCharge] = useState(false);
     setInterval(() => {
         setCharge(true)
       }, 3000);
+    
+    const email = Cookies.get("user")
+
+    const [user, setUser] = useState([]);
+    useEffect(() => {
+        axios.post('http://localhost:8000/api/listeUsr',{email})
+          .then(res => {
+            setUser(res.data);
+          })
+          .catch(error => {
+            console.error('Une erreur s\'est produite lors de la récupération des données : ', error);
+          });
+      }, []);
+      
+
+
+
+
+
     return (
         <>
          <div className="row">
@@ -33,7 +54,9 @@ function Profil() {
               <div className="card mb-3" style={{boxShadow:"5px 5px 5px #173734"}}>
                   <div className="card-body text-center shadow"><img className="rounded-circle mb-3 mt-4" src={img} width="160" height="200" style={{width:"170px"}}  />
                       <div className="mb-3"><button className="btn  btn-sm" type="button" style={{backgroundColor:"#173734", color:"white"}}>Changer de photos</button></div>
-                      <div className="mb-3"><Link to="/" className="btn btn-outline-warning  btn-sm"  >Se déconnecter</Link></div>
+                      <div className="mb-3"><Link to="/" className="btn btn-outline-warning  btn-sm" onClick={()=>{
+                        Cookies.remove("user");
+                      }} >Se déconnecter</Link></div>
                   </div>
               </div>
               <div className="card shadow mb-4" >
@@ -53,34 +76,38 @@ function Profil() {
           <div className="col-lg-8">
              
               <div className="row">
+              {user.map(u => (
                   <div className="col" >
                       <div className="card shadow mb-3" >
                           <div className="card-header py-3" >
                               <p className="text m-0 fw-bold" style={{color:"#173734"}}>Vos informations</p>
                           </div>
                           <div className="card-body" style={{borderRadius:"10px 0px",boxShadow:"5px 5px 5px #173734"}}>
-                              <form>
-                                  <div className="row">
-                                      <div className="col">
-                                          <div className="mb-3"><label className="form-label" htmlFor="username"><strong>Nom</strong></label><p>RAKOTOHASIMBOLA</p></div>
-                                      </div>
-                                      <div className="col">
-                                          <div className="mb-3"><label className="form-label" htmlFor="email"><strong>Prenom</strong></label><p>Jenny</p></div>
-                                      </div>
-                                  </div>
-                                  <div className="row">
-                                      <div className="col">
-                                          <div className="mb-3"><label className="form-label" htmlFor="first_name"><strong>Email</strong></label><p>Bloodjens32@gmail.com</p></div>
-                                      </div>
-                                      <div className="col">
-                                          <div className="mb-3"><label className="form-label" htmlFor="last_name"><strong>Solde</strong></label><p>10.000 Tc</p></div>
-                                      </div>
-                                  </div>
-                                  <div className="row">
-                                  <div className="col-4"><motion.button className="btn btn-primary btn-sm" type="submit" style={{backgroundColor:"#173734", color:"white"}} whileHover={{scale:1.1}}>Déposer des fonds</motion.button></div>
-                                  <div className="col-4"><motion.button className="btn btn-outline-success btn-sm" type="submit" whileHover={{scale:1.1}}>Retirer mes soldes</motion.button></div>
-                                  </div>
-                              </form>
+                          
+                                    <form key={u.id_user}>
+                                    <div className="row">
+                                        <div className="col">
+                                            <div className="mb-3"><label className="form-label" htmlFor="username"><strong>Nom</strong></label><p>{u.nom_user}</p></div>
+                                        </div>
+                                        <div className="col">
+                                            <div className="mb-3"><label className="form-label" htmlFor="email"><strong>Prenom</strong></label><p>{u.prenom_user}</p></div>
+                                        </div>
+                                    </div>
+                                    <div className="row">
+                                        <div className="col">
+                                            <div className="mb-3"><label className="form-label" htmlFor="first_name"><strong>Email</strong></label><p>{u.email}</p></div>
+                                        </div>
+                                        <div className="col">
+                                            <div className="mb-3"><label className="form-label" htmlFor="last_name"><strong>Solde</strong></label><p>{u.token} Tc</p></div>
+                                        </div>
+                                    </div>
+                                    <div className="row">
+                                    <div className="col-4"><motion.button className="btn btn-primary btn-sm" type="submit" style={{backgroundColor:"#173734", color:"white"}} whileHover={{scale:1.1}}>Déposer des fonds</motion.button></div>
+                                    <div className="col-4"><motion.button className="btn btn-outline-success btn-sm" type="submit" whileHover={{scale:1.1}}>Retirer mes soldes</motion.button></div>
+                                    </div>
+                                </form>
+                                
+                              
                           </div>
                       </div>
                       <div className="card shadow">
@@ -92,19 +119,23 @@ function Profil() {
                                   
                                   <div className="row">
                                       <div className="col">
-                                          <div className="mb-3"><label className="form-label" htmlFor="city"><strong>Numero</strong></label><p>442 442 442 442 512</p></div>
+                                          <div className="mb-3"><label className="form-label" htmlFor="city"><strong>Numero</strong></label><p>{u.numero_carte}</p></div>
                                       </div>
                                       <div className="col">
-                                          <div className="mb-3"><label className="form-label" htmlFor="country"><strong>Propriétaire</strong></label><p>Jenny Rakotohasimbola</p></div>
+                                          <div className="mb-3"><label className="form-label" htmlFor="country"><strong>Propriétaire</strong></label><p>{u.nom_user}</p></div>
                                       </div>
                                   </div>
-                                  <div className="mb-3"><label className="form-label" htmlFor="address"><strong>Validité</strong></label><p>11/24</p></div>
+                                  <div className="mb-3"><label className="form-label" htmlFor="address"><strong>Validité</strong></label><p>{u.validite}</p></div>
                                   <div className="mb-3"><button className="btn btn-primary btn-sm" type="submit">Renoveler mon carte</button></div>
                               </form>
                           </div>
+                          
                       </div>
+                     
                   </div>
+                   )) }
               </div>
+              
           </div>
       </div>
        
