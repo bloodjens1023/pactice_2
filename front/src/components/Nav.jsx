@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-
+import Badge from 'react-bootstrap/Badge';
 function Nav() {
     return (
         <>
@@ -44,6 +44,8 @@ function Nav() {
                         </div>
                         <div style={{ marginTop: '2px' }}>
                             Votre paniers
+                           
+                           
                         </div>
                     </Link>
                 </li>

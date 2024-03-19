@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import ValidPaiement from './ValidPaiement';
+import Form from 'react-bootstrap/Form';
+import FloatingLabel from 'react-bootstrap/FloatingLabel';
+
 import { useNavigate } from 'react-router-dom';
 import GoogleMap from './GoogleMap';
 import Headers from './Headers';
@@ -63,11 +65,9 @@ setInterval(() => {
                       <center>
                           <h3>INFORMATION A REMPLIR POUR VENDRE DES DECHETS</h3>
                       </center>
-
-                      <div className="inputBox">
-                          <span>Type de dechet</span>
-                          <select name="" id="" className="month-input" onChange={e => setMois(e.target.value)}>
-                              <option value="trash" defaultChecked disabled>dechets recyclable</option>
+                        <br /><br />
+                      <FloatingLabel controlId="floatingSelect" label="dechets recyclable" className='mb-3'>
+                            <Form.Select aria-label="dechets recyclable">
                               <option value="01">Papier et carton</option>
                               <option value="02">Verre</option>
                               <option value="03">Plastique</option>
@@ -75,16 +75,26 @@ setInterval(() => {
                               <option value="05">Batteries</option>
                               <option value="06">Electronique et électrique</option>
                               <option value="07">Textile</option>
-                          </select>
-                      </div>
-                      <div className="inputBox">
-                          <span>Numero de la carte</span>
-                          <input type="text" maxLength="16" className="card-number-input" onChange={e => setNumC(e.target.value)} required />
-                      </div>
-                      <div className="inputBox">
-                          <span>Propriétaire du carte</span>
-                          <input type="text" className="card-holder-input" onChange={e => setNomC(e.target.value)} required />
-                      </div>
+                            </Form.Select>
+                        </FloatingLabel>
+
+                      <FloatingLabel
+                            controlId="floatingInput"
+                            label="Numero de la carte"
+                            className="mb-3"
+                        >
+                            <Form.Control type="text" placeholder="111111111" maxLength={9} onChange={e => setNumC(e.target.value)} required/>
+                        </FloatingLabel>
+
+                        <FloatingLabel
+                            controlId="floatingInput"
+                            label="Propriétaire du carte"
+                            className="mb-3"
+                        >
+                            <Form.Control type="text" placeholder="John Doe" maxLength={9} onChange={e => setNomC(e.target.value)} required/>
+                        </FloatingLabel>
+
+                      
                       <div className="flexbox">
                           <div className="inputBox">
                               <span>expiration mois</span>
