@@ -13,6 +13,7 @@ import Cook from './components/Cook';
 import Dashboard from './components/Dashboard';
 import Vendre from './components/Vendre';
 import Evenement from './components/Evenement';
+import ValidVente from './components/ValidVente';
 
 
 
@@ -26,6 +27,7 @@ function App() {
       <Route path="/Paiement" Component={Paiement} />
       <Route path="/Loading" Component={Loading} />
       <Route path="/ValidPaiement" Component={ValidPaiement} />
+      <Route path="/ValidVente" Component={ValidVente} />
       <Route path="/Produits" Component={Produits} />
       <Route path="/Profil" Component={Profil} />
       <Route path="/Paniers" Component={Paniers} />

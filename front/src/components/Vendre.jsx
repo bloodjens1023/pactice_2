@@ -6,6 +6,7 @@ import GoogleMap from './GoogleMap';
 import Headers from './Headers';
 import Load from './Load';
 import Nav from './Nav';
+import ValidVente from './ValidVente';
 
 const Vendre = (props) => {
   const [numC, setNumC] = useState(' ')
@@ -25,7 +26,7 @@ const Vendre = (props) => {
         const intervalId = setInterval(() => {
             
             clearInterval(intervalId); // Arrête l'intervalle après 1000 millisecondes
-            navigate('/profil'); // Navigue vers '/profil' après 1000 millisecondes
+            navigate('/Produits'); // Navigue vers '/profil' après 1000 millisecondes
         }, 2000);
     }
 }
@@ -39,7 +40,7 @@ setInterval(() => {
   return (
     <>
     {visible && (
-        <ValidPaiement/>
+        <ValidVente/>
      )}
 
 {!visible && (
