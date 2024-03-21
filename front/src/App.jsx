@@ -14,6 +14,7 @@ import Dashboard from "./components/Dashboard";
 import Vendre from "./components/Vendre";
 import Evenement from "./components/Evenement";
 import ValidVente from "./components/ValidVente";
+import Research from "./components/Research";
 
 function App() {
   return (
@@ -32,6 +33,7 @@ function App() {
       <Route path="/Dash" Component={Dashboard} />
       <Route path="/Vendre" Component={Vendre} />
       <Route path="/Evenement" Component={Evenement} />
+      <Route path="/Research" Component={Research} />
     </Routes>
   );
 }

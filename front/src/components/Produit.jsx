@@ -9,6 +9,7 @@ import Prof from "./Prof";
 import { motion } from "framer-motion";
 import Load from "./Load";
 import Headers from "./Headers";
+import Research from "./Research";
 
 export default function Produits() {
   const [produits, setProduits] = useState([]);
@@ -137,6 +138,18 @@ export default function Produits() {
                   <SideBar />
                 </div>
               </div>
+              <br />
+              <br />
+              <br />
+              <hr />
+              <Research />
+              <br />
+              <br />
+              <br />
+              <br />
+              <br />
+              <br />
+              <br />
             </>
           )}
         </div>
