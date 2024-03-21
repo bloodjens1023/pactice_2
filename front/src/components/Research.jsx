@@ -42,8 +42,7 @@ const Research = () => {
     <div
       style={{
         display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
+
         flexDirection: "column",
 
         marginTop: "20px",

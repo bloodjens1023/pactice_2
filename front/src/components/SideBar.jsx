@@ -23,17 +23,13 @@ export default function Sidebar() {
 
   return (
     <aside>
-      <center>
-        <h2
-          style={{
-            fontFamily: "monospace",
-            color: "white",
-            marginBottom: "50px",
-          }}
-        >
-          les Produits les plus vendues
-        </h2>
-      </center>
+      <h4
+        style={{
+          marginBottom: "50px",
+        }}
+      >
+        LES PRODUITS LES PLUS VENDUES
+      </h4>
       <div
         style={{
           display: "flex",

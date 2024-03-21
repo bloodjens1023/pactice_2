@@ -97,6 +97,7 @@ export default function Produits() {
                       restDelta: 0,
                     }}
                   ></motion.div>
+
                   <div
                     style={{
                       display: "flex",
@@ -106,6 +107,7 @@ export default function Produits() {
                     }}
                     className="row"
                   >
+                    <hr />
                     {produits.map((produit) => (
                       <CardProduit
                         produits={produit}
@@ -129,7 +131,7 @@ export default function Produits() {
               </motion.div>
               <br />
               <br />
-              <div style={{ color: "white" }}>
+              <div>
                 <hr />
               </div>
               <br />
@@ -142,7 +144,9 @@ export default function Produits() {
               <br />
               <br />
               <hr />
-              <Research />
+              <div className="container-fluid">
+                <Research />
+              </div>
               <br />
               <br />
               <br />
