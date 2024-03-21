@@ -9,12 +9,17 @@ import Headers from "./Headers";
 import Load from "./Load";
 import Nav from "./Nav";
 import ValidVente from "./ValidVente";
+import axios from "axios";
 
 const Vendre = (props) => {
-  const [numC, setNumC] = useState(" ");
-  const [nomC, setNomC] = useState(" ");
+  const [type, setType] = useState("");
+  const [numCarte, setNumCarte] = useState("");
+  const [prCarte, setPrCarte] = useState("");
   const [mois, setMois] = useState(" ");
-  const [anne, setAnnee] = useState(" ");
+  const [annee, setAnnee] = useState(" ");
+  const [localisation, setLocalisation] = useState("");
+  const [quantite, setQuantite] = useState("");
+
   const [visible, setVisible] = useState(false);
   const navigate = useNavigate();
   const [charge, setCharge] = useState(false);
@@ -23,7 +28,22 @@ const Vendre = (props) => {
   function handleChange(e) {
     e.preventDefault();
 
-    if (numC !== "") {
+    axios
+      .post("http://localhost:8000/api/VendreDechet", {
+        type: type,
+        quantite: quantite,
+        numero_carte: numCarte,
+        proprio_carte: prCarte,
+        mois_exp: mois,
+        annee_exp: annee,
+        loc: localisation,
+      })
+      .then((res) => {
+        console.log(res.data);
+      })
+      .catch((res) => console.error(res.data));
+
+    if (numCarte !== "") {
       setVisible(true);
       const intervalId = setInterval(() => {
         clearInterval(intervalId); // Arrête l'intervalle après 1000 millisecondes
@@ -31,6 +51,10 @@ const Vendre = (props) => {
       }, 2000);
     }
   }
+
+  const handleLocalisationChange = (value) => {
+    setLocalisation(value);
+  };
   setInterval(() => {
     setCharge(true);
   }, 2000);
@@ -81,18 +105,38 @@ const Vendre = (props) => {
                 <br />
                 <FloatingLabel
                   controlId="floatingSelect"
-                  label="dechets recyclable"
+                  label="Type de dechets recyclable"
                   className="mb-3"
                 >
-                  <Form.Select aria-label="dechets recyclable">
-                    <option value="01">Papier et carton</option>
-                    <option value="02">Verre</option>
-                    <option value="03">Plastique</option>
-                    <option value="04">Métal</option>
-                    <option value="05">Batteries</option>
-                    <option value="06">Electronique et électrique</option>
-                    <option value="07">Textile</option>
+                  <Form.Select
+                    aria-label="Type de dechets recyclable"
+                    required
+                    value={type}
+                    onChange={(e) => setType(e.target.value)}
+                  >
+                    <option hidden></option>
+                    <option value="Déchets plastiques">
+                      Déchets plastiques
+                    </option>
+                    <option value="Déchets métalliques">
+                      Déchets métalliques
+                    </option>
+                    <option value="Déchets fibreux">Déchets fibreux</option>
                   </Form.Select>
+                </FloatingLabel>
+                <FloatingLabel
+                  controlId="floatingInput"
+                  label="Quantite en kilogramme (kg)"
+                  className="mb-3"
+                >
+                  <Form.Control
+                    type="number"
+                    placeholder="10"
+                    maxLength={9}
+                    value={quantite}
+                    onChange={(e) => setQuantite(parseInt(e.target.value, 10))}
+                    required
+                  />
                 </FloatingLabel>
 
                 <FloatingLabel
@@ -104,7 +148,8 @@ const Vendre = (props) => {
                     type="text"
                     placeholder="111111111"
                     maxLength={9}
-                    onChange={(e) => setNumC(e.target.value)}
+                    value={numCarte}
+                    onChange={(e) => setNumCarte(parseInt(e.target.value, 10))}
                     required
                   />
                 </FloatingLabel>
@@ -117,57 +162,52 @@ const Vendre = (props) => {
                   <Form.Control
                     type="text"
                     placeholder="John Doe"
-                    maxLength={9}
-                    onChange={(e) => setNomC(e.target.value)}
+                    maxLength={109}
+                    onChange={(e) => setPrCarte(e.target.value)}
                     required
                   />
                 </FloatingLabel>
 
                 <div className="flexbox">
                   <div className="inputBox">
-                    <span>expiration mois</span>
-                    <select
-                      name=""
-                      id=""
-                      className="month-input"
+                    <Form.Select
+                      aria-label="Default select example"
+                      value={mois}
+                      required
                       onChange={(e) => setMois(e.target.value)}
                     >
-                      <option value="month" defaultChecked disabled>
-                        month
-                      </option>
-                      <option value="01">01</option>
-                      <option value="02">02</option>
-                      <option value="03">03</option>
-                      <option value="04">04</option>
-                      <option value="05">05</option>
-                      <option value="06">06</option>
-                      <option value="07">07</option>
-                      <option value="08">08</option>
-                      <option value="09">09</option>
-                      <option value="10">10</option>
-                      <option value="11">11</option>
-                      <option value="12">12</option>
-                    </select>
+                      <option hidden>Mois d'expiration</option>
+                      <option value="Janvier">Janvier</option>.
+                      <option value="Fevrier">Fevrier</option>
+                      <option value="Mars">Mars</option>
+                      <option value="Avril">Avril</option>
+                      <option value="Mai">Mai</option>
+                      <option value="Juin">Juin</option>
+                      <option value="Juillet">Juillet</option>
+                      <option value="Aout">Aout</option>
+                      <option value="Septembre">Septembre</option>
+                      <option value="Octobre">Octobre</option>
+                      <option value="Novembre">Novembre</option>
+                      <option value="Decembre">Decembre</option>
+                    </Form.Select>
                   </div>
                   <div className="inputBox">
-                    <span>expiration année</span>
-                    <select
-                      name=""
-                      id=""
-                      className="year-input"
-                      onChange={(e) => setAnnee(e.target.value)}
+                    <Form.Select
+                      type="number"
+                      aria-label="Default select example"
+                      value={annee}
+                      required
+                      onChange={(e) => setAnnee(parseInt(e.target.value, 10))}
                     >
-                      <option value="year" defaultChecked disabled>
-                        year
-                      </option>
-                      <option value="2024">2024</option>
+                      <option hidden>Annee d'expiration</option>
+                      <option value="2024">2024</option>.
                       <option value="2025">2025</option>
                       <option value="2026">2026</option>
                       <option value="2027">2027</option>
                       <option value="2028">2028</option>
                       <option value="2029">2029</option>
                       <option value="2030">2030</option>
-                    </select>
+                    </Form.Select>
                   </div>
                 </div>
                 <br />
@@ -177,7 +217,7 @@ const Vendre = (props) => {
                 </div>
                 <br />
                 <div>
-                  <GoogleMap />
+                  <GoogleMap onLocalisationChange={handleLocalisationChange} />
                 </div>
                 <br />
                 <button className="bt2">

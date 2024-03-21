@@ -1,200 +1,193 @@
--- phpMyAdmin SQL Dump
--- version 5.2.1
--- https://www.phpmyadmin.net/
+-- MariaDB dump 10.19-11.3.2-MariaDB, for Linux (x86_64)
 --
--- Hôte : 127.0.0.1
--- Généré le : mar. 19 mars 2024 à 14:35
--- Version du serveur : 10.4.32-MariaDB
--- Version de PHP : 8.2.12
-
-SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-START TRANSACTION;
-SET time_zone = "+00:00";
-
+-- Host: localhost    Database: ecosort
+-- ------------------------------------------------------
+-- Server version	11.3.2-MariaDB
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
 /*!40101 SET NAMES utf8mb4 */;
+/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
+/*!40103 SET TIME_ZONE='+00:00' */;
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Base de données : `ecosort`
+-- Table structure for table `carte`
 --
 
--- --------------------------------------------------------
-
---
--- Structure de la table `carte`
---
-
+DROP TABLE IF EXISTS `carte`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `carte` (
-  `id_carte` int(11) NOT NULL,
+  `id_carte` int(11) NOT NULL AUTO_INCREMENT,
   `numero_carte` varchar(9) NOT NULL,
   `validite` varchar(255) NOT NULL,
-  `user_proprietaire` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+  `user_proprietaire` varchar(255) NOT NULL,
+  PRIMARY KEY (`id_carte`),
+  KEY `fk_user` (`user_proprietaire`),
+  CONSTRAINT `fk_user` FOREIGN KEY (`user_proprietaire`) REFERENCES `user` (`email`)
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Déchargement des données de la table `carte`
+-- Dumping data for table `carte`
 --
 
-INSERT INTO `carte` (`id_carte`, `numero_carte`, `validite`, `user_proprietaire`) VALUES
-(3, '123123123', '11/24', 'AZ@gmail.com'),
-(4, '12312312', '11/24', 'nh@gmail.com'),
-(5, '123123123', '11/24', '1ah@gmail.com'),
-(6, '123123123', '11/24', '2ah@gmail.com'),
-(7, '123123123', '11/24', 'hasiniainafanomezantsoa3@gmail.com'),
-(8, '123123123', '11/24', 'hasiniainafanomezantsoa2@gmail.com');
-
--- --------------------------------------------------------
+LOCK TABLES `carte` WRITE;
+/*!40000 ALTER TABLE `carte` DISABLE KEYS */;
+INSERT INTO `carte` VALUES
+(3,'123123123','11/24','AZ@gmail.com'),
+(4,'12312312','11/24','nh@gmail.com'),
+(5,'123123123','11/24','1ah@gmail.com'),
+(6,'123123123','11/24','2ah@gmail.com'),
+(7,'123123123','11/24','hasiniainafanomezantsoa3@gmail.com'),
+(8,'123123123','11/24','hasiniainafanomezantsoa2@gmail.com');
+/*!40000 ALTER TABLE `carte` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
--- Structure de la table `panier`
+-- Table structure for table `panier`
 --
 
+DROP TABLE IF EXISTS `panier`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `panier` (
-  `id_panier` int(11) NOT NULL,
+  `id_panier` int(11) NOT NULL AUTO_INCREMENT,
   `id_produit` int(11) NOT NULL,
-  `description_panier` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+  `description_panier` varchar(255) NOT NULL,
+  PRIMARY KEY (`id_panier`),
+  KEY `fk_produit` (`id_produit`),
+  CONSTRAINT `fk_produit` FOREIGN KEY (`id_produit`) REFERENCES `produits` (`id_produit`)
+) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Déchargement des données de la table `panier`
+-- Dumping data for table `panier`
 --
 
-INSERT INTO `panier` (`id_panier`, `id_produit`, `description_panier`) VALUES
-(16, 2, 'Produit Venyl'),
-(17, 1, 'Jus Naturel à l\'ananas en Bouteilles en verre'),
-(18, 1, 'Jus Naturel à l\'ananas en Bouteilles en verre'),
-(19, 2, 'Produit Venyl');
-
--- --------------------------------------------------------
+LOCK TABLES `panier` WRITE;
+/*!40000 ALTER TABLE `panier` DISABLE KEYS */;
+INSERT INTO `panier` VALUES
+(16,2,'Produit Venyl'),
+(17,1,'Jus Naturel à l\'ananas en Bouteilles en verre'),
+(18,1,'Jus Naturel à l\'ananas en Bouteilles en verre'),
+(19,2,'Produit Venyl'),
+(20,1,'Jus Naturel à l\'ananas en Bouteilles en verre');
+/*!40000 ALTER TABLE `panier` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
--- Structure de la table `produits`
+-- Table structure for table `produits`
 --
 
+DROP TABLE IF EXISTS `produits`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `produits` (
-  `id_produit` int(11) NOT NULL,
+  `id_produit` int(11) NOT NULL AUTO_INCREMENT,
   `nom_produit` varchar(200) NOT NULL,
   `description` varchar(200) NOT NULL,
   `prix` int(11) NOT NULL,
-  `lien_image` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+  `lien_image` varchar(255) NOT NULL,
+  PRIMARY KEY (`id_produit`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Déchargement des données de la table `produits`
+-- Dumping data for table `produits`
 --
 
-INSERT INTO `produits` (`id_produit`, `nom_produit`, `description`, `prix`, `lien_image`) VALUES
-(1, 'Jus Naturel à l\'ananas en Bouteilles en verre', 'jus naturel ', 10000, '/src/assets/img/jus.jpg'),
-(2, 'Produit Venyl', 'jus naturel ', 10000, '/src/assets/img/venyl.jpg');
-
--- --------------------------------------------------------
+LOCK TABLES `produits` WRITE;
+/*!40000 ALTER TABLE `produits` DISABLE KEYS */;
+INSERT INTO `produits` VALUES
+(1,'Jus Naturel à l\'ananas en Bouteilles en verre','jus naturel ',10000,'/src/assets/img/jus.jpg'),
+(2,'Produit Venyl','jus naturel ',10000,'/src/assets/img/venyl.jpg');
+/*!40000 ALTER TABLE `produits` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
--- Structure de la table `user`
+-- Table structure for table `user`
 --
 
+DROP TABLE IF EXISTS `user`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `user` (
-  `id_user` int(11) NOT NULL,
+  `id_user` int(11) NOT NULL AUTO_INCREMENT,
   `nom_user` varchar(100) NOT NULL,
   `prenom_user` varchar(150) NOT NULL,
   `email` varchar(255) NOT NULL,
   `mdp_user` varchar(255) NOT NULL,
-  `token` int(11) NOT NULL DEFAULT 1000
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+  `token` int(11) NOT NULL DEFAULT 1000,
+  PRIMARY KEY (`id_user`),
+  UNIQUE KEY `email` (`email`)
+) ENGINE=InnoDB AUTO_INCREMENT=70 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Déchargement des données de la table `user`
+-- Dumping data for table `user`
 --
 
-INSERT INTO `user` (`id_user`, `nom_user`, `prenom_user`, `email`, `mdp_user`, `token`) VALUES
-(57, 'Jenny', 'RAKOTO', 'hasiniainafanomezantsoa32@gmail.com', 'JENNY123#', 1000),
-(60, 'Désiré', 'fenitra', 'AZ@gmail.com', '123', 1000),
-(61, 'Désiré', 'fenitra', 'nh@gmail.com', '123', 1000),
-(63, 'Désiré', 'fenitra', 'ah@gmail.com', '123', 1000),
-(65, 'Désiré', 'fenitra', '1ah@gmail.com', '123', 1000),
-(67, 'Désiré', 'fenitra', '2ah@gmail.com', '123', 1000),
-(68, 'Désiré', 'fenitra', 'hasiniainafanomezantsoa3@gmail.com', 'cdsddfs', 1000),
-(69, 'Désiré', 'fenitra', 'hasiniainafanomezantsoa2@gmail.com', '123', 1000);
+LOCK TABLES `user` WRITE;
+/*!40000 ALTER TABLE `user` DISABLE KEYS */;
+INSERT INTO `user` VALUES
+(57,'Jenny','RAKOTO','hasiniainafanomezantsoa32@gmail.com','JENNY123#',1000),
+(60,'Désiré','fenitra','AZ@gmail.com','123',1000),
+(61,'Désiré','fenitra','nh@gmail.com','123',1000),
+(63,'Désiré','fenitra','ah@gmail.com','123',1000),
+(65,'Désiré','fenitra','1ah@gmail.com','123',1000),
+(67,'Désiré','fenitra','2ah@gmail.com','123',1000),
+(68,'Désiré','fenitra','hasiniainafanomezantsoa3@gmail.com','cdsddfs',1000),
+(69,'Désiré','fenitra','hasiniainafanomezantsoa2@gmail.com','123',1000);
+/*!40000 ALTER TABLE `user` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
--- Index pour les tables déchargées
+-- Table structure for table `vente`
 --
 
---
--- Index pour la table `carte`
---
-ALTER TABLE `carte`
-  ADD PRIMARY KEY (`id_carte`),
-  ADD KEY `fk_user` (`user_proprietaire`);
+DROP TABLE IF EXISTS `vente`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `vente` (
+  `id_vente` int(11) NOT NULL AUTO_INCREMENT,
+  `type_dechets` varchar(250) NOT NULL,
+  `quantite` int(100) NOT NULL,
+  `numero_carte` int(16) NOT NULL,
+  `proprio_carte` varchar(100) NOT NULL,
+  `mois_exp` varchar(100) NOT NULL,
+  `annee_exp` int(4) NOT NULL,
+  `localisation` varchar(100) NOT NULL,
+  PRIMARY KEY (`id_vente`)
+) ENGINE=InnoDB AUTO_INCREMENT=42 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Index pour la table `panier`
---
-ALTER TABLE `panier`
-  ADD PRIMARY KEY (`id_panier`),
-  ADD KEY `fk_produit` (`id_produit`);
-
---
--- Index pour la table `produits`
---
-ALTER TABLE `produits`
-  ADD PRIMARY KEY (`id_produit`);
-
---
--- Index pour la table `user`
---
-ALTER TABLE `user`
-  ADD PRIMARY KEY (`id_user`),
-  ADD UNIQUE KEY `email` (`email`);
-
---
--- AUTO_INCREMENT pour les tables déchargées
+-- Dumping data for table `vente`
 --
 
---
--- AUTO_INCREMENT pour la table `carte`
---
-ALTER TABLE `carte`
-  MODIFY `id_carte` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+LOCK TABLES `vente` WRITE;
+/*!40000 ALTER TABLE `vente` DISABLE KEYS */;
+INSERT INTO `vente` VALUES
+(38,'Déchets plastiques',10,123456789,'Satoru','Mars',2027,'Shibuya'),
+(39,'essaieType',10,1234567890,'Essaie','3',2024,'Tananarivo'),
+(40,'Déchets métalliques',15,333333333,'Fenitra','Avril',2025,'Andavamamba'),
+(41,'Déchets métalliques',6,123849237,'Gojo','Avril',2026,'Kyoto');
+/*!40000 ALTER TABLE `vente` ENABLE KEYS */;
+UNLOCK TABLES;
+/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
---
--- AUTO_INCREMENT pour la table `panier`
---
-ALTER TABLE `panier`
-  MODIFY `id_panier` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
-
---
--- AUTO_INCREMENT pour la table `produits`
---
-ALTER TABLE `produits`
-  MODIFY `id_produit` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
-
---
--- AUTO_INCREMENT pour la table `user`
---
-ALTER TABLE `user`
-  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=70;
-
---
--- Contraintes pour les tables déchargées
---
-
---
--- Contraintes pour la table `carte`
---
-ALTER TABLE `carte`
-  ADD CONSTRAINT `fk_user` FOREIGN KEY (`user_proprietaire`) REFERENCES `user` (`email`);
-
---
--- Contraintes pour la table `panier`
---
-ALTER TABLE `panier`
-  ADD CONSTRAINT `fk_produit` FOREIGN KEY (`id_produit`) REFERENCES `produits` (`id_produit`);
-COMMIT;
-
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+
+-- Dump completed on 2024-03-22  1:58:46
