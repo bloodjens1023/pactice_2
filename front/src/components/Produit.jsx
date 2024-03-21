@@ -34,10 +34,10 @@ export default function Produits() {
     <div className="">
       <div className="row">
         <div className="col-md-3">
-          <Nav />
+          <Nav marcher="text-decoration-underline" />
         </div>
         <div className="col-md-9 ">
-          <Headers />
+          <Headers marcher="#D56B1C" />
 
           {!charge && (
             <div

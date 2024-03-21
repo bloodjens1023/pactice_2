@@ -50,8 +50,8 @@ function Dashboard() {
     <>
       <div className="row">
         <div className="col-md-3">
-          <Nav />
-          <Headers />
+          <Nav stat="text-decoration-underline" />
+          <Headers stat="#D56B1C" />
         </div>
         <div className="col-md-9">
           {!charge && (
@@ -338,10 +338,10 @@ function Dashboard() {
                               display: "flex",
                               alignItems: "center",
                               paddingLeft: "10px",
-                              margingRight: '290px',
+                              margingRight: "290px",
                             }}
                           >
-                            <p >
+                            <p>
                               <svg
                                 xmlns="http://www.w3.org/2000/svg"
                                 width="90"
