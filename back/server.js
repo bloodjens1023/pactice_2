@@ -91,7 +91,6 @@ app.post("/api/inscription", (req, res) => {
   });
 });
 
-
 function creationCarte(email, res) {
   const sql =
     "INSERT INTO carte (numero_carte, validite, user_proprietaire) values (?,?,?);";
@@ -125,11 +124,9 @@ app.post("/api/VendreDechet", (req, res) => {
       console.error(err); // Affichez l'erreur dans la console
       return res.status(500).json("Erreur de connexion"); // Retournez une réponse avec un code d'erreur 500
     }
-    return res.json('Vente ajoutee avec success')
+    return res.json("Vente ajoutee avec success");
   });
 });
-
-
 
 app.get("/api/listeDechets", (req, res) => {
   const sql = "SELECT * FROM vente";
@@ -141,10 +138,6 @@ app.get("/api/listeDechets", (req, res) => {
     return res.json(result);
   });
 });
-
-
-
-
 
 app.get("/liste", async (req, res) => {
   const stripe = require("stripe")(
