@@ -1,14 +1,13 @@
 import Headers from "./Headers";
 import Nav from "./Nav";
-import img from "../assets/img/profil.jpg";
 import { motion } from "framer-motion";
 import Load from "./Load";
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
 import axios from "axios";
-
 import CountUp from "react-countup";
-import CountDown from "react-countdown";
+
+import { Chart as ChartJS } from "chart.js/auto";
+import { Bar, Doughnut, Line } from "react-chartjs-2";
 
 function Dashboard() {
   const [dechetPlastiques, setDechetPlastiques] = useState(0);
@@ -17,12 +16,15 @@ function Dashboard() {
   const [dechetGlobaux, setDechetGlobaux] = useState(0);
   const [empreinteEco, setEmpreinteEco] = useState(0.9766);
   const [newEmpreinte, setNewEmpreinte] = useState(0);
+  const [dataProd, setDataProd] = useState([]);
 
   useEffect(() => {
     axios
       .get("http://localhost:8000/api/listeProduit")
       .then((res) => {
-        const totaldechetGlobaux = res.data.length / 1000;
+        const data = res.data;
+        setDataProd(data);
+        const totaldechetGlobaux = data.length / 1000;
         setDechetPlastiques(totaldechetGlobaux);
         setDechetMetaliques(totaldechetGlobaux);
         setDechetFibreux(totaldechetGlobaux);
@@ -50,8 +52,8 @@ function Dashboard() {
     <>
       <div className="row">
         <div className="col-md-3">
-          <Nav stat="#FFCC00" />
-          <Headers stat="#FFCC00" />
+          <Nav />
+          <Headers />
         </div>
         <div className="col-md-9">
           {!charge && (
@@ -377,6 +379,109 @@ function Dashboard() {
                           </div>
 
                           <div className="col-lg-6">right</div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="row" style={{ paddingTop: "50px" }}>
+                  <div className="col-lg-12">
+                    <div className="card shadow">
+                      <div
+                        className="card-header py-3"
+                        style={{ textAlign: "center" }}
+                      >
+                        <p
+                          className="text m-0 fw-bold"
+                          style={{ color: "#173734" }}
+                        >
+                          L'empreinte ecologique de madagascar a l'echeille
+                          Mondiale
+                        </p>
+                      </div>
+                      <div className="row">
+                        <div
+                          className="card-body"
+                          style={{
+                            borderRadius: "10px 0px",
+                            boxShadow: "5px 5px 5px #173734",
+                            height: "250px",
+                            padding: "50px 50px",
+                            textAlign: "center",
+                          }}
+                        >
+                          <div className="row">
+                            <div
+                              className="col-lg-12"
+                              style={{
+                                display: "flex",
+                                alignItems: "center",
+                                paddingLeft: "10px",
+                                margingRight: "290px",
+                              }}
+                            >
+                              <Bar
+                                data={{
+                                  labels: dataProd.map((data) => data.nom_produit),
+                                  datasets: [
+                                    {
+                                      label: "Revenue",
+                                      data: dataProd.map((data) => data.prix),
+                                    },
+                                  ],
+                                }}
+
+                              />
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="row" style={{ paddingTop: "50px" }}>
+                  <div className="col-lg-12">
+                    <div className="card shadow">
+                      <div
+                        className="card-header py-3"
+                        style={{ textAlign: "center" }}
+                      >
+                        <p
+                          className="text m-0 fw-bold"
+                          style={{ color: "#173734" }}
+                        >
+                          L'empreinte ecologique de madagascar a l'echeille
+                          Mondiale
+                        </p>
+                      </div>
+                      <div className="row">
+                        <div
+                          className="card-body"
+                          style={{
+                            borderRadius: "10px 0px",
+                            boxShadow: "5px 5px 5px #173734",
+                            height: "250px",
+                            padding: "50px 50px",
+                            textAlign: "center",
+                          }}
+                        >
+                          <div className="row">
+                            <div
+                              className="col-lg-6"
+                              style={{
+                                display: "flex",
+                                alignItems: "center",
+                                paddingLeft: "10px",
+                                margingRight: "290px",
+                              }}
+                            >
+                              bottom-left
+                            </div>
+
+                            <div className="col-lg-6">bottom-right</div>
+                          </div>
                         </div>
                       </div>
                     </div>
