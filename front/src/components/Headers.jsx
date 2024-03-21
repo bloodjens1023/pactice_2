@@ -26,7 +26,16 @@ function Headers(props) {
           zIndex: 10,
         }}
       >
-        <h3 style={{ position: "absolute", top: 0, left: 0, margin: "15px" }}>
+        <h3
+          style={{
+            position: "absolute",
+            top: 0,
+            left: 0,
+            margin: "15px",
+            fontWeight: "bold",
+            fontFamily: "monospace",
+          }}
+        >
           ECOSORT
         </h3>
 

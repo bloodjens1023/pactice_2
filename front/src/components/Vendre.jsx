@@ -42,7 +42,7 @@ const Vendre = (props) => {
       {!visible && (
         <>
           <Headers vendre="#FFCC00" />
-          <Nav vendre="text-decoration-underline" />
+          <Nav vendre="#FFCC00" />
           {!charge && (
             <div
               style={{

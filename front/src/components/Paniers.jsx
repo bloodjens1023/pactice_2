@@ -78,7 +78,7 @@ function Paniers() {
     <div className="">
       <div className="row">
         <div className="col-md-3">
-          <Nav panier="text-decoration-underline" />
+          <Nav panier="#FFCC00" />
         </div>
         <div className="col-md-9">
           <Headers panier="#FFCC00" />

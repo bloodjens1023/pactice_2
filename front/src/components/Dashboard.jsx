@@ -50,7 +50,7 @@ function Dashboard() {
     <>
       <div className="row">
         <div className="col-md-3">
-          <Nav stat="text-decoration-underline" />
+          <Nav stat="#FFCC00" />
           <Headers stat="#FFCC00" />
         </div>
         <div className="col-md-9">

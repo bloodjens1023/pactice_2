@@ -35,7 +35,7 @@ function Profil() {
     <>
       <div className="row">
         <div className="col-md-3">
-          <Nav prof="text-decoration-underline" />
+          <Nav prof="#FFCC00" />
           <Headers prof="#FFCC00" />
         </div>
         <div className="col-md-9">

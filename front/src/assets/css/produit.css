@@ -235,11 +235,32 @@
 	color: white;
 	font-weight: 900;
 	cursor: pointer;
+	
+  }
+  .btsx{
+	border-radius: 1.4rem 1.4rem 0.7rem 0.7rem;
+	border: none;
+	padding: 0.5rem 0;
+	background: var(--accent-color);
+	color: white;
+	font-weight: 900;
+	width: 50px;
+	cursor: pointer;
+  }
+  .btsx:hover{
+	background: #FFCC00 ;
+	color: black;
+	transition: 0.3s all ease-in-out;
   }
   
   .cards .button-container .button:hover {
-	background: #F96C27 ;
-	transition: 0.5s all ease-in-out;
+	background: #FFCC00 ;
+	transition: 0.3s all ease-in-out;
+	color: black;
+	fill:black;
+  }
+  .cards .button-container .button svg {
+	color: #144076;
   }
   
   .cards .button-container .buy-button {

@@ -35,7 +35,7 @@ export default function Produits() {
     <div className="">
       <div className="row">
         <div className="col-md-3">
-          <Nav marcher="text-decoration-underline" />
+          <Nav marcher="#FFCC00" />
         </div>
         <div className="col-md-9 ">
           <Headers marcher="#FFCC00" />
