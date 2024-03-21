@@ -4,6 +4,7 @@ import Modal from "react-bootstrap/Modal";
 import { styled } from "@mui/material/styles";
 import Button from "@mui/material/Button";
 import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
+import StarRateIcon from "@mui/icons-material/StarRate";
 import axios from "axios";
 //caro produits
 function OtherCard({ produits }) {
@@ -62,6 +63,19 @@ function OtherCard({ produits }) {
         </div>
         <p class="caro-title">{produits.nom_produit}</p>
         <p class="caro-body">{produits.description}</p>
+        <div className="rating" style={{ fontSize: "20px" }}>
+          <StarRateIcon style={{ color: "#FFCC00", fontSize: "30px" }} />
+          <StarRateIcon style={{ color: "#FFCC00", fontSize: "30px" }} />
+          <StarRateIcon style={{ color: "#FFCC00", fontSize: "30px" }} />
+          <StarRateIcon style={{ color: "#FFCC00", fontSize: "30px" }} />
+          <StarRateIcon
+            style={{
+              color: "#FFFFFF",
+              fontSize: "30px",
+            }}
+          />
+          (29,062)
+        </div>
         <p
           class="footer"
           style={{
