@@ -99,7 +99,7 @@ function Evenement() {
                 transition={{ duration: 0.5, delay: 0.25 }}
               >
                 <div className="container-fluid">
-                  <motion.div
+                  {/* <motion.div
                     id="radius-shape-1"
                     className="position-absolute rounded-circle shadow-5-strong"
                     style={{
@@ -127,7 +127,7 @@ function Evenement() {
                       repeatType: "reverse",
                       restDelta: 0,
                     }}
-                  ></motion.div>
+                  ></motion.div> */}
 
                   <div
                     style={{
