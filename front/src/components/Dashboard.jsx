@@ -16,25 +16,34 @@ function Dashboard() {
   const [dechetGlobaux, setDechetGlobaux] = useState(0);
   const [empreinteEco, setEmpreinteEco] = useState(0.9766);
   const [newEmpreinte, setNewEmpreinte] = useState(0);
-  const [dataProd, setDataProd] = useState([]);
+  const [data, setData] = useState([]);
 
   useEffect(() => {
     axios
-      .get("http://localhost:8000/api/listeProduit")
+      .get("http://localhost:8000/api/listeDechets")
       .then((res) => {
-        const data = res.data;
-        setDataProd(data);
-        const totaldechetGlobaux = data.length / 1000;
-        setDechetPlastiques(totaldechetGlobaux);
-        setDechetMetaliques(totaldechetGlobaux);
-        setDechetFibreux(totaldechetGlobaux);
+        const dataJson = res.data;
+        setData(dataJson);
 
-        const totalTonne =
-          dechetFibreux + dechetPlastiques + dechetMetaliques / 10;
-        setDechetGlobaux(totalTonne);
+        // Calculer la somme des quantités pour chaque type de déchets
+        const quantitePlastiques = dataJson
+          .filter((item) => item.type_dechets === "Déchets plastiques")
+          .reduce((total, item) => total + item.quantite, 0);
+        setDechetPlastiques(quantitePlastiques / 1000);
 
-        const newEmpreinteCalc = empreinteEco - dechetGlobaux;
-        setNewEmpreinte(newEmpreinteCalc);
+        const quantiteMetalliques = dataJson
+          .filter((item) => item.type_dechets === "Déchets métalliques")
+          .reduce((total, item) => total + item.quantite, 0);
+        setDechetMetaliques(quantiteMetalliques / 1000);
+
+        const quantiteFibreux = dataJson
+          .filter((item) => item.type_dechets === "Déchets fibreux")
+          .reduce((total, item) => total + item.quantite, 0);
+        setDechetFibreux(quantiteFibreux / 1000);
+
+        console.log("Quantité de déchets plastiques :", quantitePlastiques);
+        console.log("Quantité de déchets métalliques :", quantiteMetalliques);
+        console.log("Quantité de déchets fibreux :", quantiteFibreux);
       })
       .catch((error) => {
         console.error(
@@ -42,7 +51,49 @@ function Dashboard() {
           error
         );
       });
+  }, []);
+
+  useEffect(() => {
+    setDechetGlobaux(dechetFibreux + dechetMetaliques + dechetPlastiques);
+    const newEmpreinteCalc = empreinteEco - dechetGlobaux;
+    setNewEmpreinte(newEmpreinteCalc);
   });
+
+  const topThreeLocations = data.reduce((acc, item) => {
+    if (!acc[item.localisation]) {
+      acc[item.localisation] = 0;
+    }
+    acc[item.localisation] += item.quantite;
+    return acc;
+  }, {});
+
+  const sortedTopThreeLocations = Object.entries(topThreeLocations)
+    .sort((a, b) => b[1] - a[1])
+    .slice(0, 3);
+
+  const labels = sortedTopThreeLocations.map(([location]) => location);
+  const quantities = sortedTopThreeLocations.map(([_, quantity]) => quantity);
+
+  // Données pour le graphique Doughnut
+  const doughnutData = {
+    labels: labels,
+    datasets: [
+      {
+        data: quantities,
+        backgroundColor: ["#449a90", "#25544F", "#173532"],
+      },
+    ],
+  };
+
+  const doughnutOptions = {
+    maintainAspectRatio: false,
+    responsive: true,
+    animation: {
+      animateRotate: true, // Active l'animation de rotation
+      animateScale: true, // Active l'animation de mise à l'échelle
+      duration: 1000, // Définit la durée de l'animation en millisecondes (par exemple, 1000 pour une seconde)
+    },
+  };
 
   const [charge, setCharge] = useState(false);
   setInterval(() => {
@@ -128,7 +179,7 @@ function Dashboard() {
                           decimals={4}
                         />
                         <svg
-                          fill="#25544F"
+                          fill="#E5AE09"
                           version="1.1"
                           id="Capa_1"
                           xmlns="http://www.w3.org/2000/svg"
@@ -137,7 +188,7 @@ function Dashboard() {
                           height="64px"
                           viewBox="0 0 443.336 443.336"
                           xml:space="preserve"
-                          stroke="#25544F"
+                          stroke="#E5AE09"
                           style={{ marginTop: "-30px", marginLeft: "10px" }}
                         >
                           <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
@@ -200,7 +251,7 @@ function Dashboard() {
                           decimals={4}
                         />
                         <svg
-                          fill="#25544F"
+                          fill="#E5AE09"
                           version="1.1"
                           id="Capa_1"
                           xmlns="http://www.w3.org/2000/svg"
@@ -209,7 +260,7 @@ function Dashboard() {
                           height="64px"
                           viewBox="0 0 443.336 443.336"
                           xml:space="preserve"
-                          stroke="#25544F"
+                          stroke="#E5AE09"
                           style={{ marginTop: "-30px", marginLeft: "10px" }}
                         >
                           <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
@@ -272,7 +323,7 @@ function Dashboard() {
                           decimals={4}
                         />
                         <svg
-                          fill="#25544F"
+                          fill="#E5AE09"
                           version="1.1"
                           id="Capa_1"
                           xmlns="http://www.w3.org/2000/svg"
@@ -281,7 +332,7 @@ function Dashboard() {
                           height="64px"
                           viewBox="0 0 443.336 443.336"
                           xml:space="preserve"
-                          stroke="#25544F"
+                          stroke="#E5AE09"
                           style={{ marginTop: "-30px", marginLeft: "10px" }}
                         >
                           <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
@@ -347,8 +398,9 @@ function Dashboard() {
                               <svg
                                 xmlns="http://www.w3.org/2000/svg"
                                 width="90"
+                                currentColor
                                 height="90"
-                                fill="currentColor"
+                                fill="#E5AE09"
                                 class="bi bi-fingerprint"
                                 viewBox="0 0 16 16"
                               >
@@ -378,110 +430,22 @@ function Dashboard() {
                             </p>
                           </div>
 
-                          <div className="col-lg-6">right</div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                <div className="row" style={{ paddingTop: "50px" }}>
-                  <div className="col-lg-12">
-                    <div className="card shadow">
-                      <div
-                        className="card-header py-3"
-                        style={{ textAlign: "center" }}
-                      >
-                        <p
-                          className="text m-0 fw-bold"
-                          style={{ color: "#173734" }}
-                        >
-                          L'empreinte ecologique de madagascar a l'echeille
-                          Mondiale
-                        </p>
-                      </div>
-                      <div className="row">
-                        <div
-                          className="card-body"
-                          style={{
-                            borderRadius: "10px 0px",
-                            boxShadow: "5px 5px 5px #173734",
-                            height: "250px",
-                            padding: "50px 50px",
-                            textAlign: "center",
-                          }}
-                        >
-                          <div className="row">
-                            <div
-                              className="col-lg-12"
-                              style={{
-                                display: "flex",
-                                alignItems: "center",
-                                paddingLeft: "10px",
-                                margingRight: "290px",
-                              }}
-                            >
-                              <Bar
-                                data={{
-                                  labels: dataProd.map((data) => data.nom_produit),
-                                  datasets: [
-                                    {
-                                      label: "Revenue",
-                                      data: dataProd.map((data) => data.prix),
-                                    },
-                                  ],
-                                }}
-
-                              />
-                            </div>
+                          <div className="col-lg-6">
+                            <Doughnut
+                              data={doughnutData}
+                              options={doughnutOptions}
+                            />
+                            
                           </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                <div className="row" style={{ paddingTop: "50px" }}>
-                  <div className="col-lg-12">
-                    <div className="card shadow">
-                      <div
-                        className="card-header py-3"
-                        style={{ textAlign: "center" }}
-                      >
-                        <p
-                          className="text m-0 fw-bold"
-                          style={{ color: "#173734" }}
-                        >
-                          L'empreinte ecologique de madagascar a l'echeille
-                          Mondiale
-                        </p>
-                      </div>
-                      <div className="row">
-                        <div
-                          className="card-body"
-                          style={{
-                            borderRadius: "10px 0px",
-                            boxShadow: "5px 5px 5px #173734",
-                            height: "250px",
-                            padding: "50px 50px",
-                            textAlign: "center",
-                          }}
-                        >
-                          <div className="row">
-                            <div
-                              className="col-lg-6"
-                              style={{
-                                display: "flex",
-                                alignItems: "center",
-                                paddingLeft: "10px",
-                                margingRight: "290px",
-                              }}
+                          <div className="row" style={{marginLeft: '305px'}}>
+                          <p
+                              className="text m-0 fw-bold"
+                              style={{ color: "#173734" }}
                             >
-                              bottom-left
-                            </div>
-
-                            <div className="col-lg-6">bottom-right</div>
+                              Plus gros contributteur actuelle
+                            </p>
                           </div>
+                          
                         </div>
                       </div>
                     </div>

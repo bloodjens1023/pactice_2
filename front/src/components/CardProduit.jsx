@@ -20,19 +20,7 @@ function CardProduit({ produits }) {
       })
       .catch((res) => console.error(res.data));
   }
-  return (<Modal show={show} onHide={handleClose}>
-    <Modal.Header closeButton>
-      <Modal.Title>Information</Modal.Title>
-    </Modal.Header>
-    <Modal.Body>
-      ✨✨ Ajout de Vente effectuer avec success ✨✨
-    </Modal.Body>
-    <Modal.Footer>
-      <Button variant="danger" onClick={handleClose}>
-        Close
-      </Button>
-    </Modal.Footer>
-  </Modal>
+  return (
     <>
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
