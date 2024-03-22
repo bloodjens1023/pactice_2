@@ -5,6 +5,7 @@ import Weather from "./Weather";
 import Load from "./Load";
 import Headers from "./Headers";
 import { motion } from "framer-motion";
+import Events from "./Events";
 
 const evenements = [
   {
@@ -146,6 +147,8 @@ function Evenement() {
                   </div>
                   <hr />
                   <Weather />
+
+                  <Events />
                 </div>
               </motion.div>
             </>
