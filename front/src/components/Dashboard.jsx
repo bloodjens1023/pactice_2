@@ -103,8 +103,8 @@ function Dashboard() {
     <>
       <div className="row">
         <div className="col-md-3">
-          <Nav />
-          <Headers />
+          <Nav stat="#FFCC00" />
+          <Headers stat="#FFCC00" />
         </div>
         <div className="col-md-9">
           {!charge && (
@@ -435,17 +435,15 @@ function Dashboard() {
                               data={doughnutData}
                               options={doughnutOptions}
                             />
-                            
                           </div>
-                          <div className="row" style={{marginLeft: '305px'}}>
-                          <p
+                          <div className="row" style={{ marginLeft: "305px" }}>
+                            <p
                               className="text m-0 fw-bold"
                               style={{ color: "#173734" }}
                             >
                               Plus gros contributteur actuelle
                             </p>
                           </div>
-                          
                         </div>
                       </div>
                     </div>
