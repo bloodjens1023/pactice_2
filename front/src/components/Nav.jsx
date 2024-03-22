@@ -1,5 +1,4 @@
 import { Link } from "react-router-dom";
-import Badge from "react-bootstrap/Badge";
 import React, { useState, useEffect, useRef } from "react";
 import StorefrontIcon from "@mui/icons-material/Storefront";
 import CalendarMonthIcon from "@mui/icons-material/CalendarMonth";
@@ -7,6 +6,7 @@ import ShoppingBasketIcon from "@mui/icons-material/ShoppingBasket";
 import ArchiveIcon from "@mui/icons-material/Archive";
 import InsertChartIcon from "@mui/icons-material/InsertChart";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
+import Badge from "@mui/joy/Badge";
 function Nav(props) {
   const prevPropsRef = useRef();
   const [pan, setPan] = useState(0);
@@ -84,15 +84,9 @@ function Nav(props) {
                   color: props.panier,
                 }}
               />
+
               <div style={{ marginTop: "2px", color: props.panier }}>
                 Votre paniers
-                <Badge
-                  pill
-                  bg="secondary"
-                  style={{ fontSize: "10px", verticalAlign: "top" }}
-                >
-                  {pan}
-                </Badge>
               </div>
             </Link>
           </li>

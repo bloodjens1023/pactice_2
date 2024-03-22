@@ -7,6 +7,7 @@ import ShoppingBasketIcon from "@mui/icons-material/ShoppingBasket";
 import ArchiveIcon from "@mui/icons-material/Archive";
 import InsertChartIcon from "@mui/icons-material/InsertChart";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
+import Badge from "@mui/joy/Badge";
 function Headers(props) {
   return (
     <>
@@ -83,13 +84,15 @@ function Headers(props) {
               to="/Paniers"
               style={{ display: "flex", alignItems: "start", gap: "4px" }}
             >
-              <ShoppingBasketIcon
-                style={{
-                  fontSize: "30px",
-                  marginRight: "10px",
-                  color: props.panier,
-                }}
-              />
+              <Badge size="sm" color="success" variant="solid">
+                <ShoppingBasketIcon
+                  style={{
+                    fontSize: "30px",
+                    marginRight: "10px",
+                    color: props.panier,
+                  }}
+                />
+              </Badge>
             </Link>
           </motion.li>
           <motion.li className="nav-item" whileHover={{ scale: 1.2 }}>

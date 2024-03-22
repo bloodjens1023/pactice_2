@@ -3,6 +3,7 @@ import { Carousel } from "react-bootstrap";
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import Rating from "@mui/material/Rating";
 
 export default function Sidebar() {
   const [produits, setProduits] = useState([]);
@@ -64,6 +65,7 @@ export default function Sidebar() {
                     </div>
                     <div className="bottom">
                       <hr />
+                      <Rating name="read-only" value={4} readOnly />
                       <div className="social-buttons-container">
                         <h2 style={{ fontWeight: "bold" }}>
                           {produit.prix} Tc
