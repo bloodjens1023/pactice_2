@@ -87,7 +87,7 @@ const Paiement = (props) => {
                       </center>
                       <div className="inputBox">
                           <span>Prix total de la commande</span>
-                          <h3> Tc</h3>
+                          <h3> Ar</h3>
                       </div>
                       <div className="inputBox">
                           <span>Numero de la carte</span>
@@ -101,7 +101,7 @@ const Paiement = (props) => {
                           <div className="inputBox">
                               <span>expiration mois</span>
                               <select name="" id="" className="month-input" onChange={e => setMois(e.target.value)}>
-                                  <option value="month" defaultChecked disabled>month</option>
+                                  <option value="month" defaultChecked disabled>Mois</option>
                                   <option value="01">01</option>
                                   <option value="02">02</option>
                                   <option value="03">03</option>
@@ -119,7 +119,7 @@ const Paiement = (props) => {
                           <div className="inputBox">
                               <span>expiration année</span>
                               <select name="" id="" className="year-input" onChange={e => setAnnee(e.target.value)}>
-                                  <option value="year" defaultChecked disabled>year</option>
+                                  <option value="year" defaultChecked disabled>Ans</option>
                                   <option value="2024">2024</option>
                                   <option value="2025">2025</option>
                                   <option value="2026">2026</option>

@@ -187,7 +187,7 @@ function Paniers() {
                           className="btn   d-block w-100"
                           type="button"
                           style={{ color: "white", background: "#1C8EA4" }}
-                          whileHover={{color: "white", background: "#1C8EA4"}}
+                          whileHover={{color: "#1C8EA4", background: "white", border: "1px solid"}}
                           onClick={() => {
                             navigate("/paiement/", 1000);
                           }}
