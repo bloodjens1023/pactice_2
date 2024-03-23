@@ -8,8 +8,15 @@ import { Link } from "react-router-dom";
 import Cookies from "js-cookie";
 import axios from "axios";
 
+import Modal from "react-bootstrap/Modal";
+import Button from "react-bootstrap/Button";
+
 function Profil() {
   const [charge, setCharge] = useState(false);
+  const [show, setShow] = useState(false);
+
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
   setInterval(() => {
     setCharge(true);
   }, 3000);
@@ -53,6 +60,18 @@ function Profil() {
           )}
           {charge && (
             <>
+              <Modal show={show} onHide={handleClose}>
+                <Modal.Header closeButton>
+                  <Modal.Title>Information</Modal.Title>
+                </Modal.Header>
+                <Modal.Body>✨✨ Produit ajouter au panier ✨✨</Modal.Body>
+                <Modal.Footer>
+                  <Button variant="danger" onClick={handleClose}>
+                    Close
+                  </Button>
+                </Modal.Footer>
+              </Modal>
+
               <motion.div
                 id="radius-shape-1"
                 className="position-absolute rounded-circle shadow-5-strong"
@@ -89,6 +108,8 @@ function Profil() {
                           className="btn  btn-sm"
                           type="button"
                           style={{ backgroundColor: "#173734", color: "white" }}
+                          onClick={() => {
+                            handleShow()}}
                         >
                           Changer de photos
                         </button>
