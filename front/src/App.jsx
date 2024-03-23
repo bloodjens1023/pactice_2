@@ -14,6 +14,7 @@ import Dashboard from "./components/Dashboard";
 import Model from "./components/Model";
 import Research from "./components/Research";
 import Pricing from "./components/Pricing";
+import Test from "./components/test";
 
 function App() {
   return (
@@ -32,6 +33,7 @@ function App() {
       <Route path="/Model" Component={Model} />
       <Route path="/Research" Component={Research} />
       <Route path="/Pricing" Component={Pricing} />
+      <Route path="/Test" Component={Test} />
     </Routes>
   );
 }
