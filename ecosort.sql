@@ -63,7 +63,7 @@ CREATE TABLE `panier` (
   PRIMARY KEY (`id_panier`),
   KEY `fk_produit` (`id_produit`),
   CONSTRAINT `fk_produit` FOREIGN KEY (`id_produit`) REFERENCES `produits` (`id_produit`)
-) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=24 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -72,6 +72,10 @@ CREATE TABLE `panier` (
 
 LOCK TABLES `panier` WRITE;
 /*!40000 ALTER TABLE `panier` DISABLE KEYS */;
+INSERT INTO `panier` VALUES
+(21,1,'Camera infrarouge 4 megapixels - Dalhua'),
+(22,1,'Camera infrarouge 4 megapixels - Dalhua'),
+(23,3,'Camera infrarouge 2 megapixels - Dalhua');
 /*!40000 ALTER TABLE `panier` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -120,6 +124,7 @@ CREATE TABLE `user` (
   `email` varchar(255) NOT NULL,
   `mdp_user` varchar(255) NOT NULL,
   `token` int(11) NOT NULL DEFAULT 1000,
+  `localisation` varchar(100) NOT NULL,
   PRIMARY KEY (`id_user`),
   UNIQUE KEY `email` (`email`)
 ) ENGINE=InnoDB AUTO_INCREMENT=70 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -132,14 +137,14 @@ CREATE TABLE `user` (
 LOCK TABLES `user` WRITE;
 /*!40000 ALTER TABLE `user` DISABLE KEYS */;
 INSERT INTO `user` VALUES
-(57,'Jenny','RAKOTO','hasiniainafanomezantsoa32@gmail.com','JENNY123#',1000),
-(60,'Désiré','fenitra','AZ@gmail.com','123',1000),
-(61,'Désiré','fenitra','nh@gmail.com','123',1000),
-(63,'Désiré','fenitra','ah@gmail.com','123',1000),
-(65,'Désiré','fenitra','1ah@gmail.com','123',1000),
-(67,'Désiré','fenitra','2ah@gmail.com','123',1000),
-(68,'Désiré','fenitra','hasiniainafanomezantsoa3@gmail.com','cdsddfs',1000),
-(69,'Désiré','fenitra','hasiniainafanomezantsoa2@gmail.com','123',1000);
+(57,'Jenny','RAKOTO','hasiniainafanomezantsoa32@gmail.com','JENNY123#',1000,''),
+(60,'Désiré','fenitra','AZ@gmail.com','123',1000,''),
+(61,'Désiré','fenitra','nh@gmail.com','123',1000,''),
+(63,'Désiré','fenitra','ah@gmail.com','123',1000,''),
+(65,'Désiré','fenitra','1ah@gmail.com','123',1000,''),
+(67,'Désiré','fenitra','2ah@gmail.com','123',1000,''),
+(68,'Désiré','fenitra','hasiniainafanomezantsoa3@gmail.com','cdsddfs',1000,''),
+(69,'Désiré','fenitra','hasiniainafanomezantsoa2@gmail.com','123',1000,'');
 /*!40000 ALTER TABLE `user` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -186,4 +191,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-03-23 11:36:16
+-- Dump completed on 2024-03-23 12:02:13
