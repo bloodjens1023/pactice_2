@@ -4,7 +4,7 @@ import logo from '../assets/img/logo.png'
 import { motion } from 'framer-motion';
 import ValidPaiement from './ValidPaiement';
 import { useNavigate } from 'react-router-dom';
-import GoogleMap from './GoogleMap';
+
 
 const Paiement = (props) => {
   const [numC, setNumC] = useState(' ')
@@ -130,16 +130,6 @@ const Paiement = (props) => {
                               </select>
                           </div>
 
-                      </div>
-                      <br />
-                      <br />
-                      <div>
-                          <h4>Votre Coordonées</h4>
-                      </div>
-                      <br />
-                      <div>
-
-                          <GoogleMap />
                       </div>
                       <br />
                       <button className='bt'>
