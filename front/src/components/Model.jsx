@@ -34,7 +34,7 @@ export default function Model() {
         <iframe
           title="React Pricing Table"
           src="http://localhost:3001/"
-          style={{ width: "100vw", height: "100vh", border: "none" }}
+          style={{ width: "97vw", height: "100vh", border: "none" }}
         />
       </div>
     </>
