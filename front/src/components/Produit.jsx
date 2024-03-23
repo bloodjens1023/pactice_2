@@ -114,18 +114,6 @@ export default function Produits() {
                         key={produit.id_produit}
                       />
                     ))}
-                    {produits.map((produit) => (
-                      <CardProduit
-                        produits={produit}
-                        key={produit.id_produit}
-                      />
-                    ))}
-                    {produits.map((produit) => (
-                      <CardProduit
-                        produits={produit}
-                        key={produit.id_produit}
-                      />
-                    ))}
                   </div>
                 </div>
               </motion.div>

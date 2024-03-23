@@ -30,7 +30,7 @@ function CardProduit({ produits }) {
         <Modal.Body>✨✨ Produit ajouter au panier ✨✨</Modal.Body>
         <Modal.Footer>
           <Button variant="danger" onClick={handleClose}>
-            Fermer 
+            Close
           </Button>
         </Modal.Footer>
       </Modal>
@@ -44,16 +44,16 @@ function CardProduit({ produits }) {
             alt="First slide"
           />
 
-          <div className="price">{produits.prix} Tc</div>
+          <div className="price">{produits.prix} Ar</div>
         </div>
 
         <div className="content">
           <div style={{ marginTop: "150px" }}></div>
           <div className="brand">{produits.nom_produit}</div>
-          <div className="product-name">{produits.description}</div>
+          <div className="product-name">{produits.type}</div>
           <div style={{ display: "flex" }}>
-            <Rating name="read-only" value={4} readOnly />
-            (4,62)
+            <Rating name="read-only" value={produits.value} readOnly />
+            ({produits.value})
           </div>
         </div>
 
@@ -65,7 +65,7 @@ function CardProduit({ produits }) {
               navigate("/paniers");
             }}
           >
-            Acheter Direct
+            Achat direct
           </button>
           <button
             className="btsx"
