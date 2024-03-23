@@ -39,9 +39,6 @@ app.post("/api/listeUsr", (req, res) => {
   });
 });
 
-
-
-
 app.get("/api/listePanier", (req, res) => {
   const sql =
     "SELECT *,COUNT(p.id_produit) as nb FROM `panier` as ap INNER JOIN produits as p WHERE ap.id_produit = p.id_produit GROUP BY (p.nom_produit)";
@@ -54,7 +51,6 @@ app.get("/api/listePanier", (req, res) => {
   });
 });
 
-
 app.get("/api/listeVendu", (req, res) => {
   const sql =
     "SELECT *,COUNT(p.id_produit) as nb FROM `vendu` as ap INNER JOIN produits as p WHERE ap.id_produit = p.id_produit GROUP BY (p.nom_produit)";
@@ -66,7 +62,6 @@ app.get("/api/listeVendu", (req, res) => {
     return res.json(result);
   });
 });
-
 
 app.get("/api/supprimerPanier", (req, res) => {
   const sql = "delete from panier";
@@ -91,13 +86,12 @@ app.post("/api/ajoutPanier", (req, res) => {
       return res.status(500).json("Erreur de connexion"); // Retournez une réponse avec un code d'erreur 500
     }
     ajoutVendue(req.body.e, req.body.f, res);
-    console.log('ajout au panier')
+    console.log("ajout au panier");
   });
 });
 
 function ajoutVendue(id, type, res) {
-  const sql =
-    "INSERT INTO vendu (id_produit, type_produit) values (?,?);";
+  const sql = "INSERT INTO vendu (id_produit, type_produit) values (?,?);";
   const values = [id, type];
 
   db.query(sql, values, (err, result) => {
@@ -113,7 +107,13 @@ app.post("/api/inscription", (req, res) => {
   console.log(req.body);
   const sql =
     "INSERT INTO user (nom_user, prenom_user, email, mdp_user, localisation) VALUES (?,?, ?, ?, ?)";
-  const values = [req.body.nom, req.body.prenom, req.body.email, req.body.pass, req.body.localisation];
+  const values = [
+    req.body.nom,
+    req.body.prenom,
+    req.body.email,
+    req.body.pass,
+    req.body.localisation,
+  ];
 
   db.query(sql, values, (err, result) => {
     if (err) {
@@ -121,6 +121,41 @@ app.post("/api/inscription", (req, res) => {
       return res.status(500).json("Erreur de connexion"); // Retournez une réponse avec un code d'erreur 500
     }
     creationCarte(req.body.email, res);
+  });
+});
+
+app.put("/api/inscription", (req, res) => {
+  const userEmail = req.body.email; // Récupérer l'e-mail de l'utilisateur depuis le corps de la requête
+
+  // Vérifier si l'e-mail est valide
+  if (!userEmail) {
+    return res
+      .status(400)
+      .json({ message: "L'e-mail de l'utilisateur est requis" });
+  }
+
+  // Mettre à jour l'abonnement de l'utilisateur dans votre base de données en fonction de son e-mail
+  const abonnement = req.body.abonnement; // Supposons que vous recevez l'abonnement de l'utilisateur dans le corps de la requête
+  // Vous devez écrire la logique pour mettre à jour l'abonnement de l'utilisateur dans votre base de données ici
+
+  // Exemple de mise à jour de l'abonnement dans la base de données (à adapter à votre base de données)
+  const sql = "UPDATE user SET abonnement = ? WHERE email = ?";
+  const values = [abonnement, userEmail];
+
+  db.query(sql, values, (err, result) => {
+    if (err) {
+      console.error(err); // Affichez l'erreur dans la console
+      return res
+        .status(500)
+        .json({
+          message:
+            "Erreur lors de la mise à jour de l'abonnement de l'utilisateur",
+        });
+    }
+    // Répondre avec un message de succès une fois que l'abonnement est mis à jour
+    res
+      .status(200)
+      .json({ message: "Abonnement de l'utilisateur mis à jour avec succès" });
   });
 });
 
