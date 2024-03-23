@@ -13,6 +13,7 @@ import Cook from "./components/Cook";
 import Dashboard from "./components/Dashboard";
 import Model from "./components/Model";
 import Research from "./components/Research";
+import Pricing from "./components/Pricing";
 
 function App() {
   return (
@@ -30,6 +31,7 @@ function App() {
       <Route path="/Dash" Component={Dashboard} />
       <Route path="/Model" Component={Model} />
       <Route path="/Research" Component={Research} />
+      <Route path="/Pricing" Component={Pricing} />
     </Routes>
   );
 }
