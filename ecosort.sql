@@ -72,12 +72,6 @@ CREATE TABLE `panier` (
 
 LOCK TABLES `panier` WRITE;
 /*!40000 ALTER TABLE `panier` DISABLE KEYS */;
-INSERT INTO `panier` VALUES
-(16,2,'Produit Venyl'),
-(17,1,'Jus Naturel à l\'ananas en Bouteilles en verre'),
-(18,1,'Jus Naturel à l\'ananas en Bouteilles en verre'),
-(19,2,'Produit Venyl'),
-(20,1,'Jus Naturel à l\'ananas en Bouteilles en verre');
 /*!40000 ALTER TABLE `panier` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -96,7 +90,7 @@ CREATE TABLE `produits` (
   `prix` int(11) NOT NULL,
   `lien_image` varchar(255) NOT NULL,
   PRIMARY KEY (`id_produit`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -106,8 +100,9 @@ CREATE TABLE `produits` (
 LOCK TABLES `produits` WRITE;
 /*!40000 ALTER TABLE `produits` DISABLE KEYS */;
 INSERT INTO `produits` VALUES
-(1,'Jus Naturel à l\'ananas en Bouteilles en verre','jus naturel ','2.5',10000,'/src/assets/img/jus.jpg'),
-(2,'Produit Venyl','jus naturel ','4.3',10000,'/src/assets/img/venyl.jpg');
+(1,'Camera infrarouge 4 megapixels - Dalhua','camera interieur','4',10000,'/src/assets/img/produits/dalhua/dalhua_infrarouge_4mgp.jpg'),
+(3,'Camera infrarouge 2 megapixels - Dalhua','camera exterieur','4,5',10000,'/src/assets/img/produits/dalhua/dalhua_infrarouge.jpg'),
+(4,'Mini dome - Dalhua','camera interieur','3',10000,'/src/assets/img/produits/dalhua/dalhua_mini_dome.jpg');
 /*!40000 ALTER TABLE `produits` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -191,4 +186,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-03-23 10:53:54
+-- Dump completed on 2024-03-23 11:34:42
