@@ -1,32 +1,140 @@
 export const fruit = {
-	mur: {
-		id: "mur",
+	coin1: {
+		id: "coin1",
 		name: "Mur",
 		width: 1,
 		height: 1,
-		lien:"/src/assets/mur1.JPG"
-	},
-	mur2: {
-		id: "mur2",
-		name: "Mur2",
-		width: 1,
-		height: 1,
-		lien:"/src/assets/mur2.JPG"
-	},
-	coin1: {
-		id: "coin1",
-		name: "Coin1",
-		width: 1,
-		height: 1,
-		lien:"/src/assets/coinh1.JPG"
+		lien:"/src/assets/1.JPG"
 	},
 	coin2: {
 		id: "coin2",
-		name: "Coin2",
+		name: "Mur2",
 		width: 1,
 		height: 1,
-		lien:"/src/assets/coinh2.JPG"
+		lien:"/src/assets/2.JPG"
 	},
+	coin3: {
+		id: "coin3",
+		name: "Coin3",
+		width: 1,
+		height: 1,
+		lien:"/src/assets/3.JPG"
+	},
+	coin4: {
+		id: "coin4",
+		name: "Coin4",
+		width: 1,
+		height: 1,
+		lien:"/src/assets/4.JPG"
+	},
+	coin5: {
+		id: "coin5",
+		name: "Coin5",
+		width: 1,
+		height: 1,
+		lien:"/src/assets/5.JPG"
+	},
+	coin6: {
+		id: "coin6",
+		name: "Coin6",
+		width: 1,
+		height: 1,
+		lien:"/src/assets/6.JPG"
+	},
+	coin7: {
+		id: "coin7",
+		name: "Coin7",
+		width: 1,
+		height: 1,
+		lien:"/src/assets/7.JPG"
+	},
+	coin8: {
+		id: "coin8",
+		name: "Coin8",
+		width: 1,
+		height: 1,
+		lien:"/src/assets/8.JPG"
+	},
+	coin9: {
+		id: "coin9",
+		name: "Coin9",
+		width: 1,
+		height: 1,
+		lien:"/src/assets/9.JPG"
+	},
+
+	porte1: {
+		id: "porte1",
+		name: "Porte1",
+		width: 1,
+		height: 1,
+		lien:"/src/assets/10.png"
+	},
+	porte2: {
+		id: "porte2",
+		name: "Porte2",
+		width: 1,
+		height: 1,
+		lien:"/src/assets/11.png"
+	},
+	porte3: {
+		id: "porte3",
+		name: "Porte3",
+		width: 1,
+		height: 1,
+		lien:"/src/assets/12.png"
+	},
+	porte4: {
+		id: "porte4",
+		name: "Porte4",
+		width: 1,
+		height: 1,
+		lien:"/src/assets/13.png"
+	},
+	fen1: {
+		id: "fen1",
+		name: "Fen1",
+		width: 3,
+		height: 1,
+		lien:"/src/assets/14.png"
+	},
+	fen2: {
+		id: "fen2",
+		name: "Fen2",
+		width: 1,
+		height: 3,
+		lien:"/src/assets/15.png"
+	},
+	fen3: {
+		id: "fen3",
+		name: "Fen3",
+		width: 1,
+		height: 1,
+		lien:"/src/assets/16.png"
+	},
+	fen4: {
+		id: "fen4",
+		name: "Fen4",
+		width: 1,
+		height: 1,
+		lien:"/src/assets/17.png"
+	},
+	fen5: {
+		id: "fen5",
+		name: "Fen5",
+		width: 1,
+		height: 1,
+		lien:"/src/assets/18.png"
+	},
+	fen6: {
+		id: "fen6",
+		name: "Fen6",
+		width: 1,
+		height: 1,
+		lien:"/src/assets/19.png"
+	},
+
+
 	meuble: {
 		id: "meuble",
 		name: "Meuble",
@@ -34,20 +142,7 @@ export const fruit = {
 		height: 2,
 		lien:"/src/assets/meuble.JPG"
 	},
-	porte1: {
-		id: "porte1",
-		name: "Porte1",
-		width: 1,
-		height: 2,
-		lien:"/src/assets/porte.png"
-	},
-	porte2: {
-		id: "porte2",
-		name: "Porte2",
-		width: 2,
-		height: 1,
-		lien:"/src/assets/porte.png"
-	},
+	
 	banana: {
 		id: "banana",
 		name: "Banana",

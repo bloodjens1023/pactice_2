@@ -14,40 +14,79 @@ export default function Model() {
     for (let i = 0; i < 40; i++) {
       dispatch({
         type: "ADD_ITEM",
-        payload: { item: { ...fruit.coin1, x: 25, y: 2 } },
+        payload: { item: { ...fruit.coin1, x: 16, y: 1 } },
       });
       dispatch({
         type: "ADD_ITEM",
-        payload: { item: { ...fruit.coin2, x: 25, y: 6 } },
-      });
-
-      dispatch({
-        type: "ADD_ITEM",
-        payload: { item: { ...fruit.mur, x: 19, y: 2 } },
+        payload: { item: { ...fruit.coin2, x: 17, y: 1 } },
       });
       dispatch({
         type: "ADD_ITEM",
-        payload: { item: { ...fruit.mur2, x: 25, y: 5 } },
+        payload: { item: { ...fruit.coin3, x: 18, y: 1 } },
       });
       dispatch({
         type: "ADD_ITEM",
-        payload: { item: { ...fruit.meuble, x: 21, y: 2 } },
+        payload: { item: { ...fruit.coin4, x: 16, y: 2 } },
       });
       dispatch({
         type: "ADD_ITEM",
-        payload: { item: { ...fruit.porte1, x: 20, y: 2 } },
+        payload: { item: { ...fruit.coin5, x: 17, y: 2 } },
       });
       dispatch({
         type: "ADD_ITEM",
-        payload: { item: { ...fruit.porte2, x: 20, y: 1 } },
+        payload: { item: { ...fruit.coin6, x: 18, y: 2 } },
       });
       dispatch({
         type: "ADD_ITEM",
-        payload: { item: { ...fruit.banana, x: 19, y: 7 } },
+        payload: { item: { ...fruit.coin7, x: 16, y: 3 } },
       });
       dispatch({
         type: "ADD_ITEM",
-        payload: { item: { ...fruit.test, x: 20, y: 6 } },
+        payload: { item: { ...fruit.coin8, x: 17, y: 3 } },
+      });
+      dispatch({
+        type: "ADD_ITEM",
+        payload: { item: { ...fruit.coin9, x: 18, y: 3 } },
+      });
+      dispatch({
+        type: "ADD_ITEM",
+        payload: { item: { ...fruit.porte1, x: 17, y: 5 } },
+      });
+      dispatch({
+        type: "ADD_ITEM",
+        payload: { item: { ...fruit.porte2, x: 17, y: 6 } },
+      });
+      dispatch({
+        type: "ADD_ITEM",
+        payload: { item: { ...fruit.porte3, x: 16, y: 6 } },
+      });
+      dispatch({
+        type: "ADD_ITEM",
+        payload: { item: { ...fruit.porte4, x: 16, y: 5 } },
+      });
+      dispatch({
+        type: "ADD_ITEM",
+        payload: { item: { ...fruit.fen1, x: 19, y: 5 } },
+      });
+      dispatch({
+        type: "ADD_ITEM",
+        payload: { item: { ...fruit.fen2, x: 19, y: 6 } },
+      });
+      dispatch({
+        type: "ADD_ITEM",
+        payload: { item: { ...fruit.fen3, x: 16, y: 8 } },
+      });
+      dispatch({
+        type: "ADD_ITEM",
+        payload: { item: { ...fruit.fen4, x: 17, y: 8 } },
+      });
+      dispatch({
+        type: "ADD_ITEM",
+        payload: { item: { ...fruit.fen5, x: 16, y: 9 } },
+      });
+      dispatch({
+        type: "ADD_ITEM",
+        payload: { item: { ...fruit.fen6, x: 17, y: 9 } },
       });
     }
   }, []);
@@ -146,6 +185,8 @@ export default function Model() {
 
               backgroundImage: "url(" + item.lien + ")",
               backgroundSize: "cover",
+              backgroundRepeat: "no-repeat",
+              backgroundPosition: "center",
               fontSize: 10,
               textAlign: "right",
               padding: "2px 4px",
