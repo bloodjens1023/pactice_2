@@ -1,4 +1,3 @@
-import { motion } from "framer-motion";
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import StorefrontIcon from "@mui/icons-material/Storefront";
@@ -7,7 +6,35 @@ import InsertChartIcon from "@mui/icons-material/InsertChart";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import DrawIcon from '@mui/icons-material/Draw';
 import Badge from "@mui/joy/Badge";
+import { motion } from "framer-motion";
+
 function Headers(props) {
+  const [showHeader, setShowHeader] = useState(true);
+
+  // Fonction pour masquer le header lorsque la largeur de l'écran est inférieure à 768px
+  const handleResize = () => {
+    if (window.innerWidth <= 800) {
+      setShowHeader(true);
+    } else {
+      setShowHeader(false);
+    }
+  };
+
+  // Ajouter un écouteur d'événement de redimensionnement lorsque le composant est monté
+  React.useEffect(() => {
+    handleResize(); // Appel initial pour vérifier la largeur de l'écran
+    window.addEventListener("resize", handleResize);
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+
+  // Si showHeader est false, retourner null pour ne pas afficher le header
+  if (!showHeader) {
+    return null;
+  }
+
+  // Si showHeader est true, afficher le header
   return (
     <>
       <div

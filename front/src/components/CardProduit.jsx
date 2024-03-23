@@ -5,6 +5,7 @@ import Button from "react-bootstrap/Button";
 import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
 import Rating from "@mui/material/Rating";
 import axios from "axios";
+import { motion } from "framer-motion";
 //card produits
 function CardProduit({ produits }) {
   const navigate = useNavigate();
@@ -58,7 +59,9 @@ function CardProduit({ produits }) {
         </div>
 
         <div className="button-container">
-          <button 
+          <motion.button
+            style={{ background:"#1C8EA4"}}
+            whileHover={{ backgroundColor: "yellow" }}
             className="buy-button button"
             onClick={() => {
               ajoutPanier(produits.id_produit, produits.nom_produit);
@@ -66,8 +69,10 @@ function CardProduit({ produits }) {
             }}
           >
             Achat direct
-          </button>
-          <button
+            </motion.button>
+          <motion.button
+            style={{ background:"#1C8EA4"}}
+            whileHover={{ backgroundColor: "yellow" }}
             className="btsx"
             onClick={() => {
               handleShow();
@@ -75,7 +80,7 @@ function CardProduit({ produits }) {
             }}
           >
             <AddShoppingCartIcon />
-          </button>
+          </motion.button>
         </div>
       </div>
     </>

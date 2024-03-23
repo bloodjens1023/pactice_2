@@ -57,7 +57,7 @@ export default function Produits() {
             <>
               <motion.div
                 className="d-flex flex-column"
-                style={{ marginTop: "100px" }}
+                style={{ marginTop: "0px" }}
                 variants={{
                   hidden: { opacity: 0 },
                   visible: { opacity: 1 },

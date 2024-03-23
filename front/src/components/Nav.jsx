@@ -3,10 +3,8 @@ import React, { useState, useEffect, useRef } from "react";
 import StorefrontIcon from "@mui/icons-material/Storefront";
 import CalendarMonthIcon from "@mui/icons-material/CalendarMonth";
 import ShoppingBasketIcon from "@mui/icons-material/ShoppingBasket";
-import ArchiveIcon from "@mui/icons-material/Archive";
 import InsertChartIcon from "@mui/icons-material/InsertChart";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
-import Badge from "@mui/joy/Badge";
 function Nav(props) {
   const prevPropsRef = useRef();
   const [pan, setPan] = useState(0);
@@ -22,7 +20,7 @@ function Nav(props) {
 
   return (
     <>
-      <div className=" vertical-nav" style={{ borderRadius: "0px 0px 40px" }}>
+      <div className=" vertical-nav" style={{ borderRadius: "30px", marginLeft: "10px" }}>
         <ul className="nav flex-column">
           <li
             style={{

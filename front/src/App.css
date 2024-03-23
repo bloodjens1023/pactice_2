@@ -34,3 +34,8 @@ body{
     transform: translateY(-20px);
     transition: opacity 300ms, transform 300ms;
   }
+
+  .boutoT:hover{
+    background-color: yellow;
+    color: white;
+  }
