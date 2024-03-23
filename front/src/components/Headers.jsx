@@ -2,11 +2,10 @@ import { motion } from "framer-motion";
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import StorefrontIcon from "@mui/icons-material/Storefront";
-import CalendarMonthIcon from "@mui/icons-material/CalendarMonth";
 import ShoppingBasketIcon from "@mui/icons-material/ShoppingBasket";
-import ArchiveIcon from "@mui/icons-material/Archive";
 import InsertChartIcon from "@mui/icons-material/InsertChart";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
+import DrawIcon from '@mui/icons-material/Draw';
 import Badge from "@mui/joy/Badge";
 function Headers(props) {
   return (
@@ -16,7 +15,7 @@ function Headers(props) {
           paddingTop: "10px",
           width: "100%",
           height: "60px",
-          backgroundColor: "#173734",
+          backgroundColor: "#1C8EA4",
           position: "fixed",
           top: 0,
           left: 0,
@@ -37,7 +36,7 @@ function Headers(props) {
             fontFamily: "monospace",
           }}
         >
-          ECOSORT
+          Eye I
         </h3>
 
         <ul
@@ -66,10 +65,10 @@ function Headers(props) {
           <motion.li className="nav-item" whileHover={{ scale: 1.2 }}>
             <Link
               className="nav-link"
-              to="/"
+              to="/Model"
               style={{ display: "flex", alignItems: "start", gap: "4px" }}
             >
-              <CalendarMonthIcon
+              <DrawIcon
                 style={{
                   fontSize: "30px",
                   marginRight: "10px",
@@ -93,21 +92,6 @@ function Headers(props) {
                   }}
                 />
               </Badge>
-            </Link>
-          </motion.li>
-          <motion.li className="nav-item" whileHover={{ scale: 1.2 }}>
-            <Link
-              className="nav-link"
-              to="/vendre"
-              style={{ display: "flex", alignItems: "start", gap: "4px" }}
-            >
-              <ArchiveIcon
-                style={{
-                  fontSize: "30px",
-                  marginRight: "10px",
-                  color: props.vendre,
-                }}
-              />
             </Link>
           </motion.li>
           <motion.li className="nav-item" whileHover={{ scale: 1.2 }}>

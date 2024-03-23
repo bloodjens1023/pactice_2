@@ -56,7 +56,7 @@ function Nav(props) {
           <li className="nav-item">
             <Link
               className="nav-link"
-              to="/"
+              to="/Model"
               style={{ display: "flex", alignItems: "start", gap: "4px" }}
             >
               <CalendarMonthIcon
