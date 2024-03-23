@@ -72,9 +72,24 @@ app.post("/api/ajoutPanier", (req, res) => {
       console.error(err); // Affichez l'erreur dans la console
       return res.status(500).json("Erreur de connexion"); // Retournez une réponse avec un code d'erreur 500
     }
-    return res.json("insertion panier avec success");
+    ajoutVendue(req.body.e, req.body.f, res);
+    console.log('ajout au panier')
   });
 });
+
+function ajoutVendue(id, type, res) {
+  const sql =
+    "INSERT INTO vendu (id_produit, type_produit) values (?,?);";
+  const values = [id, type];
+
+  db.query(sql, values, (err, result) => {
+    if (err) {
+      console.error(err); // Affichez l'erreur dans la console
+      return res.status(500).json("Erreur de connexion"); // Retournez une réponse avec un code d'erreur 500
+    }
+    return res.json("ajouter au vendu");
+  });
+}
 
 app.post("/api/inscription", (req, res) => {
   console.log(req.body);
