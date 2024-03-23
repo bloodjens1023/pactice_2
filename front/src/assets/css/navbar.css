@@ -4,7 +4,7 @@
     position: fixed;
     height: 100%;
     width: 230px;
-    background:  #1C8EA4;
+    background:  #774DB3;
   }
   @media (max-width: 800px){
     .vertical-nav {
@@ -24,7 +24,7 @@
   
   .vertical-nav ul li .nav-link {
     display: block;
-    color: #000000;
+    color: #ffff;
     text-decoration: none;
     transition: 0.2s all linear;
   }
@@ -32,24 +32,8 @@
   .vertical-nav ul li .nav-link:hover {
     background-color: white;
     border-radius: 15px;
-    color:#007EF2;
+    color:#774DB3;
   }
-
-  
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
   .parent {
     width: 290px;
