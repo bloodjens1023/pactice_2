@@ -91,7 +91,8 @@ DROP TABLE IF EXISTS `produits`;
 CREATE TABLE `produits` (
   `id_produit` int(11) NOT NULL AUTO_INCREMENT,
   `nom_produit` varchar(200) NOT NULL,
-  `description` varchar(200) NOT NULL,
+  `type` varchar(200) NOT NULL,
+  `value` varchar(5) NOT NULL,
   `prix` int(11) NOT NULL,
   `lien_image` varchar(255) NOT NULL,
   PRIMARY KEY (`id_produit`)
@@ -105,8 +106,8 @@ CREATE TABLE `produits` (
 LOCK TABLES `produits` WRITE;
 /*!40000 ALTER TABLE `produits` DISABLE KEYS */;
 INSERT INTO `produits` VALUES
-(1,'Jus Naturel à l\'ananas en Bouteilles en verre','jus naturel ',10000,'/src/assets/img/jus.jpg'),
-(2,'Produit Venyl','jus naturel ',10000,'/src/assets/img/venyl.jpg');
+(1,'Jus Naturel à l\'ananas en Bouteilles en verre','jus naturel ','2.5',10000,'/src/assets/img/jus.jpg'),
+(2,'Produit Venyl','jus naturel ','4.3',10000,'/src/assets/img/venyl.jpg');
 /*!40000 ALTER TABLE `produits` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -164,7 +165,7 @@ CREATE TABLE `vente` (
   `annee_exp` int(4) NOT NULL,
   `localisation` varchar(100) NOT NULL,
   PRIMARY KEY (`id_vente`)
-) ENGINE=InnoDB AUTO_INCREMENT=42 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=43 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -175,9 +176,9 @@ LOCK TABLES `vente` WRITE;
 /*!40000 ALTER TABLE `vente` DISABLE KEYS */;
 INSERT INTO `vente` VALUES
 (38,'Déchets plastiques',10,123456789,'Satoru','Mars',2027,'Shibuya'),
-(39,'essaieType',10,1234567890,'Essaie','3',2024,'Tananarivo'),
 (40,'Déchets métalliques',15,333333333,'Fenitra','Avril',2025,'Andavamamba'),
-(41,'Déchets métalliques',6,123849237,'Gojo','Avril',2026,'Kyoto');
+(41,'Déchets métalliques',6,123849237,'Gojo','Avril',2026,'Kyoto'),
+(42,'Déchets fibreux',100,666666666,'Boywithuke','Decembre',2026,'united state');
 /*!40000 ALTER TABLE `vente` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -190,4 +191,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-03-22  1:58:46
+-- Dump completed on 2024-03-23 10:53:54
