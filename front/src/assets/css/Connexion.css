@@ -1,17 +1,6 @@
 .background-radial-gradient {
-    background: radial-gradient(#c6f1ed, #153330);
-    /* background-image: radial-gradient(650px circle at 0% 0%,
-        hsl(218, 41%, 35%) 15%,
-        hsl(218, 41%, 30%) 35%,
-        hsl(218, 41%, 20%) 75%,
-        hsl(218, 41%, 19%) 80%,
-        transparent 100%),
-      radial-gradient(1250px circle at 100% 100%,
-        hsl(218, 41%, 45%) 15%,
-        hsl(218, 41%, 30%) 35%,
-        hsl(218, 41%, 20%) 75%,
-        hsl(218, 41%, 19%) 80%,
-        transparent 100%); */
+    background: radial-gradient(#c6f1ed, #007EF2);
+ 
   }
   
 
@@ -21,7 +10,7 @@
     width: 220px;
     top: -60px;
     left: -300px;
-    background: radial-gradient(#3e867f, #153330);
+    background: radial-gradient(#E4F1FC, #007EF2);
     overflow: hidden;
   }
 
@@ -31,7 +20,7 @@
     right: -50px;
     width: 300px;
     height: 300px;
-    background: radial-gradient(#3e867f, #153330);
+    background: radial-gradient(#E4F1FC, #007EF2);
     overflow: hidden;
   }
   @media (max-width: 1100px){
@@ -46,6 +35,6 @@
 
   .bg-glass {
     color: white;
-    background-color: hsla(0, 0%, 18%, 0.66) !important;
+    background-color: hwb(0 18% 82% / 0.66) !important;
     backdrop-filter: saturate(200%) blur(25px);
   }

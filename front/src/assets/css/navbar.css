@@ -4,7 +4,7 @@
     position: fixed;
     height: 100%;
     width: 230px;
-    background: radial-gradient(#285752, #153330);
+    background: radial-gradient(#e4f1fc, #007EF2);
   }
   @media (max-width: 800px){
     .vertical-nav {
@@ -24,7 +24,7 @@
   
   .vertical-nav ul li .nav-link {
     display: block;
-    color: #FFFFFF;
+    color: #000000;
     text-decoration: none;
     transition: 0.2s all linear;
   }
@@ -32,7 +32,7 @@
   .vertical-nav ul li .nav-link:hover {
     background-color: white;
     border-radius: 0px 30px 0px 0px;
-    color:black;
+    color:#007EF2;
   }
 
   

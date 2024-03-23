@@ -31,7 +31,7 @@ function Nav(props) {
               fontFamily: "monospace",
             }}
           >
-            <h1>Ecosort</h1>
+            <h1>Eye I</h1>
           </li>
           <hr />
 
@@ -67,13 +67,13 @@ function Nav(props) {
                 }}
               />
               <div style={{ marginTop: "2px", color: props.event }}>
-                Evènements
+                Modelisation
               </div>
             </Link>
           </li>
           <li className="nav-item">
             <Link
-              className="nav-link"
+              className="nav-link"  
               to="/Paniers"
               style={{ display: "flex", alignItems: "start", gap: "4px" }}
             >
@@ -87,24 +87,6 @@ function Nav(props) {
 
               <div style={{ marginTop: "2px", color: props.panier }}>
                 Votre paniers
-              </div>
-            </Link>
-          </li>
-          <li className="nav-item">
-            <Link
-              className="nav-link"
-              to="/Vendre"
-              style={{ display: "flex", alignItems: "start", gap: "4px" }}
-            >
-              <ArchiveIcon
-                style={{
-                  fontSize: "30px",
-                  marginRight: "10px",
-                  color: props.vendre,
-                }}
-              />
-              <div style={{ marginTop: "2px", color: props.vendre }}>
-                Vendre
               </div>
             </Link>
           </li>

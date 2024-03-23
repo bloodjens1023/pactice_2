@@ -30,7 +30,7 @@ function CardProduit({ produits }) {
         <Modal.Body>✨✨ Produit ajouter au panier ✨✨</Modal.Body>
         <Modal.Footer>
           <Button variant="danger" onClick={handleClose}>
-            Close
+            Fermer 
           </Button>
         </Modal.Footer>
       </Modal>

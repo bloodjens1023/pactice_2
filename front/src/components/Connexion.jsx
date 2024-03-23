@@ -19,11 +19,11 @@ function Connexion() {
                 <div className="row gx-lg-5 align-items-center mb-5">
                 <div className="col-lg-6 mb-5 mb-lg-0" style={{zIndex:10}} >
                     <h1 className="my-5 display-5 fw-bold ls-tight" style={{color:"hsl(218, 81%, 95%)"}}>
-                    Ecosort <br />
-                    <span style={{color:"hsl(218, 81%, 75%)"}}>Ameliorer votre entourage</span>
+                    Eye I <br />
+                    <span style={{color:"#04323A"}}>Ameliorer votre securite</span>
                     </h1>
-                    <p className="mb-4 opacity-70" style={{color:"hsl(218, 81%, 85%)"}}>
-                    Afin d'améliorer votre entourage et faire du recyclage votre loisir, il est nécesaire de s'inscrire si vous n'êtes pas encore membre
+                    <p className="mb-4 opacity-70" style={{color:"#000000"}}>
+                    Afin d'améliorer votre entourage et de la securite votre priorité, il est nécesaire de s'inscrire si vous n'êtes pas encore membre
                     </p>
                 </div>
 

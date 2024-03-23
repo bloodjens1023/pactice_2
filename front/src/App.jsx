@@ -11,9 +11,7 @@ import Profil from "./components/Profil";
 import Paniers from "./components/Paniers";
 import Cook from "./components/Cook";
 import Dashboard from "./components/Dashboard";
-import Vendre from "./components/Vendre";
-import Evenement from "./components/Evenement";
-import ValidVente from "./components/ValidVente";
+import Model from "./components/Model";
 import Research from "./components/Research";
 
 function App() {
@@ -25,14 +23,12 @@ function App() {
       <Route path="/Paiement" Component={Paiement} />
       <Route path="/Loading" Component={Loading} />
       <Route path="/ValidPaiement" Component={ValidPaiement} />
-      <Route path="/ValidVente" Component={ValidVente} />
       <Route path="/Produits" Component={Produits} />
       <Route path="/Profil" Component={Profil} />
       <Route path="/Paniers" Component={Paniers} />
       <Route path="/Cookies" Component={Cook} />
       <Route path="/Dash" Component={Dashboard} />
-      <Route path="/Vendre" Component={Vendre} />
-      <Route path="/Evenement" Component={Evenement} />
+      <Route path="/Model" Component={Model} />
       <Route path="/Research" Component={Research} />
     </Routes>
   );
