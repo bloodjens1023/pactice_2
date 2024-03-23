@@ -2,7 +2,7 @@ import {useNavigate  } from "react-router-dom";
 function Loading() {
     const navigate = useNavigate();
     setTimeout(function() {
-        navigate('/Produits');
+        navigate('/Pricing');
     },1000)
     return ( 
         <div className="banter-loader">

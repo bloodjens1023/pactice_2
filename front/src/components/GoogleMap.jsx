@@ -76,7 +76,7 @@ const GoogleMap = ({ display, onLocalisationChange }) => {
         flexDirection: "column",
       }}
     >
-      <div style={{ display: "flex", flexDirection: "row", gap: "20px" }}>
+      <div style={{ display: "flex", flexDirection: "row", gap: "20px", marginBottom: '20px' }}>
         <input
           className="form-control"
           required
@@ -85,7 +85,7 @@ const GoogleMap = ({ display, onLocalisationChange }) => {
           placeholder="votre localisation"
           value={localisation}
           onChange={handleChange6}
-          style={{ display: display }}
+          style={{ display: display, width:'400px' }}
         />
         <div className="col">
           <motion.button
@@ -102,8 +102,6 @@ const GoogleMap = ({ display, onLocalisationChange }) => {
           </motion.button>
         </div>
       </div>
-      <br />
-      <br />
       <iframe
         style={{
           width: "500px",
@@ -112,6 +110,7 @@ const GoogleMap = ({ display, onLocalisationChange }) => {
           borderRadius: "20px",
           border: "1px solid black",
           padding: "10px",
+          marginBottom: '20px'
         }}
         id="google-map"
         title="Google Map"

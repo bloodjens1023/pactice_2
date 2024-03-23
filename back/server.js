@@ -112,8 +112,8 @@ function ajoutVendue(id, type, res) {
 app.post("/api/inscription", (req, res) => {
   console.log(req.body);
   const sql =
-    "INSERT INTO user (nom_user, prenom_user, email, mdp_user) VALUES (?, ?, ?, ?)";
-  const values = [req.body.nom, req.body.prenom, req.body.email, req.body.pass];
+    "INSERT INTO user (nom_user, prenom_user, email, mdp_user, localisation) VALUES (?,?, ?, ?, ?)";
+  const values = [req.body.nom, req.body.prenom, req.body.email, req.body.pass, req.params.localisation];
 
   db.query(sql, values, (err, result) => {
     if (err) {
