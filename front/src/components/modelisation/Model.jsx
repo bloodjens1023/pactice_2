@@ -174,11 +174,12 @@ const GridLayer = styled.div`
   top: 0;
   left: 0;
   display: grid;
+  border: 1px solid #000;
   grid-gap: 2px;
   grid-auto-rows: 42px;
   grid-template-columns: repeat(15, 42px);
 `;
 
 const Cell = styled.div`
-  border: 0px solid #ccc;
+  border: 1px solid #ccc;
 `;
