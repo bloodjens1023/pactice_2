@@ -11,7 +11,7 @@ export default function Model() {
   React.useEffect(() => {
     // Add initial items
 
-    for (let i = 0; i < 1; i++) {
+    for (let i = 0; i < 40; i++) {
       dispatch({
         type: "ADD_ITEM",
         payload: { item: { ...fruit.coin1, x: 25, y: 2 } },
@@ -134,48 +134,7 @@ export default function Model() {
                 }
               }
             }}
-            onAnimationComplete={() => {
-              dispatch({ type: "ANIMATION_ENDED" });
-              for (let i = 0; i < 1; i++) {
-                dispatch({
-                  type: "ADD_ITEM",
-                  payload: { item: { ...fruit.coin1, x: 25, y: 2 } },
-                });
-                dispatch({
-                  type: "ADD_ITEM",
-                  payload: { item: { ...fruit.coin2, x: 25, y: 6 } },
-                });
-
-                dispatch({
-                  type: "ADD_ITEM",
-                  payload: { item: { ...fruit.mur, x: 19, y: 2 } },
-                });
-                dispatch({
-                  type: "ADD_ITEM",
-                  payload: { item: { ...fruit.mur2, x: 25, y: 5 } },
-                });
-                dispatch({
-                  type: "ADD_ITEM",
-                  payload: { item: { ...fruit.meuble, x: 21, y: 2 } },
-                });
-                dispatch({
-                  type: "ADD_ITEM",
-                  payload: { item: { ...fruit.porte1, x: 20, y: 2 } },
-                });
-                dispatch({
-                  type: "ADD_ITEM",
-                  payload: { item: { ...fruit.porte2, x: 20, y: 1 } },
-                });
-                dispatch({
-                  type: "ADD_ITEM",
-                  payload: { item: { ...fruit.banana, x: 19, y: 7 } },
-                });
-                dispatch({
-                  type: "ADD_ITEM",
-                  payload: { item: { ...fruit.test, x: 20, y: 6 } },
-                });
-              }
-            }}
+            onAnimationComplete={() => dispatch({ type: "ANIMATION_ENDED" })}
             initial={false}
             animate={!isDragging}
             style={{
