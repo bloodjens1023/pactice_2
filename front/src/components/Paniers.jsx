@@ -186,8 +186,8 @@ function Paniers() {
                         <motion.button
                           className="btn   d-block w-100"
                           type="button"
-                          style={{ color: "white", background: "#173734" }}
-                          whileHover={{ scale: 1.1 }}
+                          style={{ color: "white", background: "#1C8EA4" }}
+                          whileHover={{color: "white", background: "#1C8EA4"}}
                           onClick={() => {
                             navigate("/paiement/", 1000);
                           }}
@@ -196,7 +196,7 @@ function Paniers() {
                         </motion.button>
                         <br />
                         <motion.button
-                          className="btn btn-outline-danger   d-block w-100"
+                          className="btn btn-outline-danger d-block w-100"
                           type="button"
                           whileHover={{ scale: 1.1 }}
                           onClick={() => {

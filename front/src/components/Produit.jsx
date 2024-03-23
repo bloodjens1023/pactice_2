@@ -5,7 +5,6 @@ import axios from "axios";
 import { useState, useEffect } from "react";
 import CardProduit from "./CardProduit";
 import Nav from "./Nav";
-import Prof from "./Prof";
 import { motion } from "framer-motion";
 import Load from "./Load";
 import Headers from "./Headers";

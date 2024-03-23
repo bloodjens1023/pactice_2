@@ -58,7 +58,7 @@ function CardProduit({ produits }) {
         </div>
 
         <div className="button-container">
-          <button
+          <button 
             className="buy-button button"
             onClick={() => {
               ajoutPanier(produits.id_produit, produits.nom_produit);
