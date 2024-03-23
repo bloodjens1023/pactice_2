@@ -1,12 +1,22 @@
-
+import { useState } from "react";
 import '../assets/css/pricing.css'
 export default function Pricing() {
+
+    const [abonnement, setAbonnement] = useState('')
+    const [prixBasique, setPrixBasique] = useState(250000)
+    const [isAnuelle, setIsAnuelle] = useState(true)
+
+
+    function switchMethode(){
+        setIsAnuelle(false)
+        console.log(isAnuelle)
+    }
     return (
         <div className="container">
             <div className="text-center">
                 <div className="nav price-tabs" role="tablist">
-                    <a className="nav-link active" href="#yearly" role="tab" data-toggle="tab">Yearly</a>
-                    <a className="nav-link" href="#monthly" role="tab" data-toggle="tab">Monthly</a>
+                    <a className="nav-link active" href="#yearly" role="tab" data-toggle="tab" onClick={() => switchMethode()}>Annuelle</a>
+                    <a className="nav-link" href="#monthly" role="tab" data-toggle="tab">Mensuelle</a>
                 </div>
             </div>
             <div className="tab-content wow fadeIn">
@@ -15,7 +25,7 @@ export default function Pricing() {
                         <div className="col-md-6 col-lg-4 mb-30">
                             <div className="price-item text-center">
                                 <div className="price-top">
-                                    <h4>Personal</h4>
+                                    <h4>Basic</h4>
                                     <h2 className="mb-0"><sup>$</sup>99</h2>
                                     <span className="text-capitalize">per year</span>
                                 </div>

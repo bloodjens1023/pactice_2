@@ -19,13 +19,14 @@ function Inscription() {
 
   function handleChange(e) {
     e.preventDefault();
+    console.log(localisation)
     axios
       .post("http://localhost:8000/api/inscription", {
         nom,
         prenom,
         email,
-        localisation,
         pass,
+        localisation: localisation,
       })
       .then((res) => {
         console.log(res.data);
@@ -145,6 +146,7 @@ function Inscription() {
                     <GoogleMap
                       onLocalisationChange={handleLocalisationChange}
                     />
+                    <p>Votre localisation : {localisation}</p>
 
                     <div className="form-outline mb-3">
                       <input
