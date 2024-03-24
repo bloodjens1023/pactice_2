@@ -28,13 +28,31 @@ export default function Model() {
           alignItems: "center",
           justifyContent: "center",
           flexDirection: "column",
-          marginTop: "20px",
         }}
       >
+        <div>
+          <h2
+            style={{
+              textAlign: "center",
+              marginTop: "20px",
+              marginLeft: "20px",
+              marginRight: "20px",
+              textTransform: "uppercase",
+            }}
+          >
+            Modeliser votre maison avec EyE I et tester sa sécurité en temps
+            réel
+          </h2>
+        </div>
         <iframe
           title="React Pricing Table"
           src="http://localhost:3001/"
-          style={{ width: "97vw", height: "100vh", border: "none" }}
+          style={{
+            width: "97vw",
+            height: "100vh",
+            border: "none",
+            borderRadius: "20px",
+          }}
         />
       </div>
     </>

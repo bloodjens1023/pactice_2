@@ -8,7 +8,6 @@ import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 
 import { element } from "prop-types";
-
 export default function Model() {
   const [state, dispatch] = React.useReducer(reducer, initial);
   const [desable, setDesable] = React.useState(false);
@@ -21,7 +20,7 @@ export default function Model() {
 
   React.useEffect(() => {
     // Add initial items
-    for (let i = 0; i < 5; i++) {
+    for (let i = 0; i < 20; i++) {
       dispatch({
         type: "ADD_ITEM",
         payload: { item: { ...fruit.coin1, x: 16, y: 1 } },
@@ -98,19 +97,29 @@ export default function Model() {
         type: "ADD_ITEM",
         payload: { item: { ...fruit.fen6, x: 17, y: 9 } },
       });
+      dispatch({
+        type: "ADD_ITEM",
+        payload: { item: { ...fruit.meuble, x: 20, y: 1 } },
+      });
     }
   }, []);
 
   const draggingItem = state.items.find((i) => i.id === state.dragging?.id);
 
   const handleDragEnd = (item) => {
-    console.log(item);
     if (
       item.id == "porte1" ||
       item.id == "porte2" ||
       item.id == "porte3" ||
-      item.id == "porte4"
+      item.id == "porte4" ||
+      item.id == "fen1" ||
+      item.id == "fen2" ||
+      item.id == "fen3" ||
+      item.id == "fen4" ||
+      item.id == "fen5" ||
+      item.id == "fen6"
     ) {
+      console.log(item);
       const newArray = [...count];
       // Ajouter un nouvel objet au tableau
       newArray.push(item);
@@ -249,16 +258,11 @@ export default function Model() {
                   <div
                     class={item.id}
                     style={{
-                      backgroundColor: "red",
+                      backgroundColor: "green",
 
                       width: "10px",
                       height: "10px",
                       borderRadius: "30px",
-                    }}
-                    onClick={() => {
-                      if (item.active) {
-                        item.active = !item.active;
-                      }
                     }}
                   ></div>
                 )}
@@ -266,15 +270,10 @@ export default function Model() {
                   <div
                     class={item.id}
                     style={{
-                      backgroundColor: item.active ? "red" : "green",
+                      backgroundColor: "green",
                       width: "10px",
                       height: "10px",
                       borderRadius: "30px",
-                    }}
-                    onClick={() => {
-                      if (item.active) {
-                        item.active = !item.active;
-                      }
                     }}
                   ></div>
                 )}
@@ -282,15 +281,88 @@ export default function Model() {
                   <div
                     class={item.id}
                     style={{
-                      backgroundColor: item.active ? "red" : "green",
+                      backgroundColor: "green",
                       width: "10px",
                       height: "10px",
                       borderRadius: "30px",
                     }}
-                    onClick={() => {
-                      if (item.active) {
-                        item.active = !item.active;
-                      }
+                  ></div>
+                )}
+                {item.id === "porte4" && (
+                  <div
+                    class={item.id}
+                    style={{
+                      backgroundColor: "green",
+                      width: "10px",
+                      height: "10px",
+                      borderRadius: "30px",
+                    }}
+                  ></div>
+                )}
+
+                {item.id === "fen1" && (
+                  <div
+                    class={item.id}
+                    style={{
+                      backgroundColor: "green",
+                      width: "10px",
+                      height: "10px",
+                      borderRadius: "30px",
+                    }}
+                  ></div>
+                )}
+                {item.id === "fen2" && (
+                  <div
+                    class={item.id}
+                    style={{
+                      backgroundColor: "green",
+                      width: "10px",
+                      height: "10px",
+                      borderRadius: "30px",
+                    }}
+                  ></div>
+                )}
+                {item.id === "fen3" && (
+                  <div
+                    class={item.id}
+                    style={{
+                      backgroundColor: "green",
+                      width: "10px",
+                      height: "10px",
+                      borderRadius: "30px",
+                    }}
+                  ></div>
+                )}
+                {item.id === "fen4" && (
+                  <div
+                    class={item.id}
+                    style={{
+                      backgroundColor: "green",
+                      width: "10px",
+                      height: "10px",
+                      borderRadius: "30px",
+                    }}
+                  ></div>
+                )}
+                {item.id === "fen5" && (
+                  <div
+                    class={item.id}
+                    style={{
+                      backgroundColor: "green",
+                      width: "10px",
+                      height: "10px",
+                      borderRadius: "30px",
+                    }}
+                  ></div>
+                )}
+                {item.id === "fen6" && (
+                  <div
+                    class={item.id}
+                    style={{
+                      backgroundColor: "green",
+                      width: "10px",
+                      height: "10px",
+                      borderRadius: "30px",
                     }}
                   ></div>
                 )}
@@ -307,6 +379,29 @@ export default function Model() {
               right: "170px",
               width: "200px",
               height: "50px",
+
+              color: "white",
+              fontSize: "20px",
+              textAlign: "center",
+              border: "none",
+              borderRadius: "10px",
+              cursor: "pointer",
+              outline: "none",
+            }}
+            className=" btn btn-danger"
+          >
+            Test Alert
+          </button>
+          <button
+            onClick={() => {
+              setDesable(!desable);
+            }}
+            style={{
+              position: "absolute",
+              bottom: "30px",
+              right: "400px",
+              width: "200px",
+              height: "50px",
               backgroundColor: "rgb(152, 195, 121)",
               color: "white",
               fontSize: "20px",
@@ -317,7 +412,7 @@ export default function Model() {
               outline: "none",
             }}
           >
-            Confirmer
+            verouiller
           </button>
         </div>
         <div
@@ -337,7 +432,7 @@ export default function Model() {
             count.map((item, index) => (
               <>
                 <div
-                  key={index + 1}
+                  key={index}
                   class="switch-holder"
                   style={{
                     display: "flex",
@@ -351,9 +446,10 @@ export default function Model() {
                       {item.id} numero {index + 1}
                     </span>
                   </div>
-                  <motion.button
-                    id={index}
+                  <motion.input
+                    id={index + 1}
                     type="button"
+                    value="Intéragir"
                     style={{
                       height: "40px",
                       fontSize: "1.2em",
@@ -367,45 +463,16 @@ export default function Model() {
                     onClick={(e) => {
                       handleShow();
                       const elements = document.querySelectorAll("." + item.id);
-                      console.log(elements);
+                      console.log("--------------" + elements.length);
                       for (let i = 0; i < elements.length; i++) {
-                        console.log(elements[i]);
-                        console.log(i);
-                        console.log(e.target.id);
-                        if (i == e.target.id) {
-                          try {
-                            if (
-                              elements[i + 1].style.backgroundColor == "green"
-                            ) {
-                              elements[i + 1].style.backgroundColor = "red";
-                            } else {
-                              elements[i + 1].style.backgroundColor = "green";
-                            }
-                            break;
-                          } catch (e) {
-                            if (elements[i].style.backgroundColor == "green") {
-                              elements[i].style.backgroundColor = "red";
-                            } else {
-                              elements[i].style.backgroundColor = "green";
-                            }
-                            break;
-                          }
+                        if (elements[i].style.backgroundColor == "green") {
+                          elements[i].style.backgroundColor = "red";
+                        } else {
+                          elements[i].style.backgroundColor = "green";
                         }
                       }
                     }}
-                  >
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="32"
-                      height="32"
-                      fill="currentColor"
-                      class="bi bi-power"
-                      viewBox="0 0 16 16"
-                    >
-                      <path d="M7.5 1v7h1V1z" />
-                      <path d="M3 8.812a5 5 0 0 1 2.578-4.375l-.485-.874A6 6 0 1 0 11 3.616l-.501.865A5 5 0 1 1 3 8.812" />
-                    </svg>
-                  </motion.button>
+                  />
                 </div>
                 <br />
               </>

@@ -16,11 +16,12 @@ import Research from "./components/Research";
 import Pricing from "./components/Pricing";
 import Test from "./components/test";
 import PlanPerso1 from "./components/PlanPerso1";
+import Homepage from "../../front2/src/Accueil/Homepage";
 
 function App() {
   return (
     <Routes>
-      <Route path="/" Component={Accueil} />
+      <Route path="/" Component={Homepage} />
       <Route path="/Connexion" Component={Connexion} />
       <Route path="/Inscription" Component={Inscription} />
       <Route path="/Paiement" Component={Paiement} />
