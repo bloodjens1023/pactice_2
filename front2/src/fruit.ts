@@ -4,7 +4,7 @@ export const fruit = {
 		name: "Mur",
 		width: 1,
 		height: 1,
-		lien:"/src/assets/1.JPG"
+		lien:"/src/assets/1.JPG",
 	},
 	coin2: {
 		id: "coin2",
@@ -68,28 +68,32 @@ export const fruit = {
 		name: "Porte1",
 		width: 1,
 		height: 1,
-		lien:"/src/assets/10.png"
+		lien:"/src/assets/10.png",
+		active:false
 	},
 	porte2: {
 		id: "porte2",
 		name: "Porte2",
 		width: 1,
 		height: 1,
-		lien:"/src/assets/11.png"
+		lien:"/src/assets/11.png",
+		active:false
 	},
 	porte3: {
 		id: "porte3",
 		name: "Porte3",
 		width: 1,
 		height: 1,
-		lien:"/src/assets/12.png"
+		lien:"/src/assets/12.png",
+		active:false
 	},
 	porte4: {
 		id: "porte4",
 		name: "Porte4",
 		width: 1,
 		height: 1,
-		lien:"/src/assets/13.png"
+		lien:"/src/assets/13.png",
+		active:false
 	},
 	fen1: {
 		id: "fen1",
