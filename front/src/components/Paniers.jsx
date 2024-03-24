@@ -170,15 +170,15 @@ function Paniers() {
                       <div className="bg-body-tertiary summary">
                         <h3>Sommaire</h3>
                         <h4>
-                          <span className="text">type de commande</span>
+                          <span className="text" color="#774DB3">type de commande</span>
                           <span className="price">{produits.length}</span>
                         </h4>
                         <h4>
-                          <span className="text">Nombre de Total</span>
+                          <span className="text" color="#774DB3">Nombre de Total</span>
                           <span className="price">{nbProduits}</span>
                         </h4>
                         <h4>
-                          <span className="text">Total</span>
+                          <span className="text" color="#774DB3">Total</span>
                           <span className="price">{prixTotal} Tc</span>
                           <br />
                           <br />
@@ -186,8 +186,8 @@ function Paniers() {
                         <motion.button
                           className="btn   d-block w-100"
                           type="button"
-                          style={{ color: "white", background: "#1C8EA4" }}
-                          whileHover={{color: "#1C8EA4", background: "white", border: "1px solid"}}
+                          style={{ color: "#ffffff", background: "#774DB3" }}
+                          whileHover={{color: "#774DB3", background: "white", border: "1px solid"}}
                           onClick={() => {
                             navigate("/paiement/", 1000);
                           }}
