@@ -37,7 +37,7 @@ export default function Produits() {
           <Nav marcher="#FFCC00" />
         </div>
         <div className="col-md-9 ">
-          <Headers marcher="#FFCC00" />
+          <Headers marcher="#774DB3" />
 
           {!charge && (
             <div
@@ -75,7 +75,7 @@ export default function Produits() {
                       top: "20%",
                       width: "300px",
                       height: "300px",
-                      backgroundColor: "#153330",
+                      backgroundColor: "#00000",
                     }}
                     animate={{ scale: 1.3 }}
                     transition={{

@@ -60,8 +60,8 @@ function CardProduit({ produits }) {
 
         <div className="button-container">
           <motion.button
-            style={{ background:"#1C8EA4"}}
-            whileHover={{ backgroundColor: "yellow" }}
+            style={{ background:"#774DB3"}}
+            whileHover={{ backgroundColor: "#FFFFFF" }}
             className="buy-button button"
             onClick={() => {
               ajoutPanier(produits.id_produit, produits.nom_produit);
@@ -71,8 +71,8 @@ function CardProduit({ produits }) {
             Achat direct
             </motion.button>
           <motion.button
-            style={{ background:"#1C8EA4"}}
-            whileHover={{ backgroundColor: "yellow" }}
+            style={{ background:"#774DB3"}}
+            whileHover={{ backgroundColor: "FFFFFF" }}
             className="btsx"
             onClick={() => {
               handleShow();

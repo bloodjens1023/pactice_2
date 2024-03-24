@@ -10,7 +10,7 @@
     width: 220px;
     top: -60px;
     left: -300px;
-    background: radial-gradient(#E4F1FC, #007EF2);
+    background: radial-gradient(#E4F1FC, #774DB3);
     overflow: hidden;
   }
 
@@ -20,7 +20,7 @@
     right: -50px;
     width: 300px;
     height: 300px;
-    background: radial-gradient(#E4F1FC, #007EF2);
+    background: radial-gradient(#E4F1FC, #774DB3);
     overflow: hidden;
   }
   @media (max-width: 1100px){

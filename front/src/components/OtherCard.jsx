@@ -80,7 +80,7 @@ function OtherCard({ produits }) {
             variant="contained"
             size="large"
             startIcon={<AddShoppingCartIcon />}
-            style={{ backgroundColor: "#173734", borderRadius: "40px" }}
+            style={{ backgroundColor: "#774DB3", borderRadius: "40px" }}
             onClick={() => {
               handleShow();
               ajoutPanier(produits.id_produit, produits.nom_produit);

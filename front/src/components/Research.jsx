@@ -68,7 +68,7 @@ const Research = () => {
           onChange={hangleChange}
         />
         <button
-          style={{ height: "100%", backgroundColor: "#173734" }}
+          style={{ height: "100%", backgroundColor: "#774DB3" }}
           className="btn btn-primary"
         >
           <SearchIcon />
