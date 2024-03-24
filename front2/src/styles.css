@@ -65,12 +65,3 @@ body {
 		  3px 3px 5px rgba(0, 0, 0, .25);
 	transition: .3s ease-in-out;
   }
-  
-  .switch-toggle input[type="checkbox"]:checked+label::before {
-	left: 50%;
-	content: 'ON';
-	color: #fff;
-	background-color: #00b33c;
-	box-shadow: -3px -3px 5px rgba(255, 255, 255, .5),
-		  3px 3px 5px #00b33c;
-  }

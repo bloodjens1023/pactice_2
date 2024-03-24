@@ -146,7 +146,6 @@ function Inscription() {
                     <GoogleMap
                       onLocalisationChange={handleLocalisationChange}
                     />
-                    <p>Votre localisation : {localisation}</p>
 
                     <div className="form-outline mb-3">
                       <input
