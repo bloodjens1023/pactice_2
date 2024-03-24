@@ -30,7 +30,7 @@ CREATE TABLE `carte` (
   PRIMARY KEY (`id_carte`),
   KEY `fk_user` (`user_proprietaire`),
   CONSTRAINT `fk_user` FOREIGN KEY (`user_proprietaire`) REFERENCES `user` (`email`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -40,12 +40,7 @@ CREATE TABLE `carte` (
 LOCK TABLES `carte` WRITE;
 /*!40000 ALTER TABLE `carte` DISABLE KEYS */;
 INSERT INTO `carte` VALUES
-(3,'123123123','11/24','AZ@gmail.com'),
-(4,'12312312','11/24','nh@gmail.com'),
-(5,'123123123','11/24','1ah@gmail.com'),
-(6,'123123123','11/24','2ah@gmail.com'),
-(7,'123123123','11/24','hasiniainafanomezantsoa3@gmail.com'),
-(8,'123123123','11/24','hasiniainafanomezantsoa2@gmail.com');
+(13,'123123123','11/24','satorug10@gmail.com');
 /*!40000 ALTER TABLE `carte` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -63,7 +58,7 @@ CREATE TABLE `panier` (
   PRIMARY KEY (`id_panier`),
   KEY `fk_produit` (`id_produit`),
   CONSTRAINT `fk_produit` FOREIGN KEY (`id_produit`) REFERENCES `produits` (`id_produit`)
-) ENGINE=InnoDB AUTO_INCREMENT=24 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=39 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -73,9 +68,12 @@ CREATE TABLE `panier` (
 LOCK TABLES `panier` WRITE;
 /*!40000 ALTER TABLE `panier` DISABLE KEYS */;
 INSERT INTO `panier` VALUES
-(21,1,'Camera infrarouge 4 megapixels - Dalhua'),
-(22,1,'Camera infrarouge 4 megapixels - Dalhua'),
-(23,3,'Camera infrarouge 2 megapixels - Dalhua');
+(33,1,'Camera infrarouge 4 megapixels - Dalhua'),
+(34,1,'Camera infrarouge 4 megapixels - Dalhua'),
+(35,1,'Camera infrarouge 4 megapixels - Dalhua'),
+(36,1,'Camera infrarouge 4 megapixels - Dalhua'),
+(37,3,'Camera infrarouge 2 megapixels - Dalhua'),
+(38,4,'Mini dome - Dalhua');
 /*!40000 ALTER TABLE `panier` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -125,9 +123,11 @@ CREATE TABLE `user` (
   `mdp_user` varchar(255) NOT NULL,
   `token` int(11) NOT NULL DEFAULT 1000,
   `localisation` varchar(100) NOT NULL,
+  `abonnement` varchar(100) DEFAULT NULL,
+  `pfp` varchar(255) DEFAULT '/src/assets/img/pfp/default.png',
   PRIMARY KEY (`id_user`),
   UNIQUE KEY `email` (`email`)
-) ENGINE=InnoDB AUTO_INCREMENT=70 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=82 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -137,15 +137,39 @@ CREATE TABLE `user` (
 LOCK TABLES `user` WRITE;
 /*!40000 ALTER TABLE `user` DISABLE KEYS */;
 INSERT INTO `user` VALUES
-(57,'Jenny','RAKOTO','hasiniainafanomezantsoa32@gmail.com','JENNY123#',1000,''),
-(60,'Désiré','fenitra','AZ@gmail.com','123',1000,''),
-(61,'Désiré','fenitra','nh@gmail.com','123',1000,''),
-(63,'Désiré','fenitra','ah@gmail.com','123',1000,''),
-(65,'Désiré','fenitra','1ah@gmail.com','123',1000,''),
-(67,'Désiré','fenitra','2ah@gmail.com','123',1000,''),
-(68,'Désiré','fenitra','hasiniainafanomezantsoa3@gmail.com','cdsddfs',1000,''),
-(69,'Désiré','fenitra','hasiniainafanomezantsoa2@gmail.com','123',1000,'');
+(81,'Boy','Withuke','satorug10@gmail.com','nekena',1000,'South park','Basique Mensuelle','/src/assets/img/pfp/file-1711240172489-298370511.jpg');
 /*!40000 ALTER TABLE `user` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `vendu`
+--
+
+DROP TABLE IF EXISTS `vendu`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `vendu` (
+  `id_vendu` int(11) NOT NULL AUTO_INCREMENT,
+  `id_produit` int(11) NOT NULL,
+  `type_produit` varchar(100) NOT NULL,
+  PRIMARY KEY (`id_vendu`)
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `vendu`
+--
+
+LOCK TABLES `vendu` WRITE;
+/*!40000 ALTER TABLE `vendu` DISABLE KEYS */;
+INSERT INTO `vendu` VALUES
+(1,1,'Camera infrarouge 4 megapixels - Dalhua'),
+(2,1,'Camera infrarouge 4 megapixels - Dalhua'),
+(3,1,'Camera infrarouge 4 megapixels - Dalhua'),
+(4,1,'Camera infrarouge 4 megapixels - Dalhua'),
+(5,3,'Camera infrarouge 2 megapixels - Dalhua'),
+(6,4,'Mini dome - Dalhua');
+/*!40000 ALTER TABLE `vendu` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -191,4 +215,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-03-23 12:02:13
+-- Dump completed on 2024-03-24  3:30:37

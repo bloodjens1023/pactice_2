@@ -2,8 +2,11 @@ const express = require("express");
 const mysql = require("mysql");
 const cors = require("cors");
 const bodyParser = require("body-parser");
-
 const app = express();
+const path = require("path");
+const multer = require("multer");
+
+
 app.use(cors());
 const port = 8000;
 app.use(bodyParser.json());
@@ -13,6 +16,89 @@ const db = mysql.createConnection({
   password: "",
   database: "ecosort",
 });
+
+
+
+
+
+
+
+
+
+
+
+const uploadDirectory = path.join(__dirname, "../front/src/assets/img/pfp");
+
+// Configuration de Multer pour gérer l'upload de fichiers
+const storage = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, uploadDirectory);
+  },
+  filename: function (req, file, cb) {
+    // Générer un nom de fichier unique en ajoutant un timestamp au nom d'origine
+    const uniqueSuffix = Date.now() + "-" + Math.round(Math.random() * 1E9);
+    cb(null, file.fieldname + "-" + uniqueSuffix + path.extname(file.originalname));
+  },
+});
+
+const upload = multer({ storage: storage });
+
+// Endpoint pour gérer l'upload d'images
+app.post("/api/imageUpload", upload.single("file"), (req, res) => {
+  // Vérifier si un fichier a été correctement uploadé
+  if (!req.file) {
+    return res.status(400).json({ message: "Aucun fichier n'a été téléchargé." });
+  }
+
+  // Retourner l'URL du fichier uploadé
+  const photoURL = "/src/assets/img/pfp/" + req.file.filename;
+  res.status(200).json({ message: "Fichier téléchargé avec succès.", photoURL: photoURL });
+});
+
+app.put("/api/imageUpdate", (req, res) => {
+  const userEmail = req.body.email;
+  if (!userEmail) {
+    return res
+      .status(400)
+      .json({ message: "L'e-mail de l'utilisateur est requis" });
+  }
+  const pfp = req.body.pfp;
+  console.log(`ito pr le pfp ${pfp} vita upload anaty assets`);
+
+  const sql = "UPDATE user SET pfp = ? WHERE email = ?";
+  const values = [pfp, userEmail];
+
+  db.query(sql, values, (err, result) => {
+    if (err) {
+      console.error(err);
+      return res
+        .status(500)
+        .json({
+          message:
+            "Erreur lors de la mise à jour de la photo de profil de l'utilisateur",
+        });
+    }
+    res
+      .status(200)
+      .json({ message: "Photo de profil de l'utilisateur mis à jour avec succès" });
+  });
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 app.get("/api/listeProduit", (req, res) => {
   const sql = "SELECT * FROM produits";
@@ -29,7 +115,6 @@ app.post("/api/listeUsr", (req, res) => {
   const sql =
     "SELECT * FROM user as u inner join carte as c where u.email=c.user_proprietaire and u.email = ? limit 1";
   const values = [req.body.email];
-  console.log(sql);
   db.query(sql, values, (err, result) => {
     if (err) {
       console.error(err); // Affichez l'erreur dans la console

@@ -8,12 +8,19 @@ import { Link } from "react-router-dom";
 import Cookies from "js-cookie";
 import axios from "axios";
 
+import { useNavigate } from 'react-router-dom';
+
 import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
+import "../assets/css/modalProf.css";
 
 function Profil() {
   const [charge, setCharge] = useState(false);
   const [show, setShow] = useState(false);
+  const [selectedFile, setSelectedFile] = useState(null);
+  const [photoURL, setPhotoURL] = useState(null);
+  const userEmail = Cookies.get("user");
+  const navigate = useNavigate();
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -37,6 +44,72 @@ function Profil() {
         );
       });
   }, []);
+  const handleFileChange = (event) => {
+    setSelectedFile(event.target.files[0]);
+  };
+
+  function handleSave() {
+    if (selectedFile === null) {
+      alert("Veuillez sélectionner un fichier");
+      return;
+    }
+
+    // Vérifier l'extension du fichier
+    const allowedExtensions = ["jpg", "jpeg", "png"];
+    const fileExtension = selectedFile.name.split(".").pop().toLowerCase();
+
+    if (!allowedExtensions.includes(fileExtension)) {
+      alert(
+        "Extension de fichier non autorisée. Veuillez sélectionner une image au format JPG, JPEG ou PNG."
+      );
+      return;
+    }
+
+    // Créer un objet FormData pour envoyer le fichier
+    const formData = new FormData();
+    formData.append("file", selectedFile);
+
+    // Envoyer le fichier vers votre API
+    axios
+      .post("http://localhost:8000/api/imageUpload", formData)
+      .then((response) => {
+        // Traitement de la réponse si nécessaire
+        console.log("Fichier envoyé avec succès :", response.data);
+        // Mettre à jour l'URL de la photo dans l'état
+        const baseUrl = response.data.photoURL;
+        console.log(`baseUrl : ${baseUrl}`);
+        setPhotoURL(baseUrl);
+        console.log(photoURL);
+        UpDatePfp(baseUrl)
+
+        handleClose();
+      })
+      .catch((error) => {
+        console.error("Erreur lors de l'envoi du fichier :", error);
+        // Afficher un message d'erreur à l'utilisateur si nécessaire
+        alert(
+          "Une erreur s'est produite lors de l'envoi du fichier. Veuillez réessayer."
+        );
+      });
+  }
+
+  function UpDatePfp(photo) {
+    axios
+      .put("http://localhost:8000/api/imageUpdate", {
+        email: userEmail,
+        pfp: photo,
+      })
+      .then((res) => {
+        reloadPage()
+        console.log("Succes de la mise a jour de la photot de profil");
+      })
+      .catch((error) => {
+        console.error("Erreur de la mise a jour de la photot de profil", error);
+      });
+  }
+  function reloadPage() {
+    window.location.reload();
+  }
 
   return (
     <>
@@ -60,14 +133,50 @@ function Profil() {
           )}
           {charge && (
             <>
-              <Modal show={show} onHide={handleClose}>
+              <Modal
+                show={show}
+                onHide={handleClose}
+                style={{ marginTop: "100px" }}
+              >
                 <Modal.Header closeButton>
-                  <Modal.Title>Information</Modal.Title>
+                  <Modal.Title>Selectionner votre nouvelle photo</Modal.Title>
                 </Modal.Header>
-                <Modal.Body>✨✨ Produit ajouter au panier ✨✨</Modal.Body>
+                <Modal.Body
+                  style={{
+                    display: "flex",
+                    justifyContent: "center",
+                    alignItems: "center",
+                  }}
+                >
+                  <div class="input-div">
+                    <input
+                      class="input"
+                      name="file"
+                      type="file"
+                      onChange={handleFileChange}
+                    />
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="1em"
+                      height="1em"
+                      stroke-linejoin="round"
+                      stroke-linecap="round"
+                      viewBox="0 0 24 24"
+                      stroke-width="2"
+                      fill="none"
+                      stroke="currentColor"
+                      class="icon"
+                    >
+                      <polyline points="16 16 12 12 8 16"></polyline>
+                      <line y2="21" x2="12" y1="12" x1="12"></line>
+                      <path d="M20.39 18.39A5 5 0 0 0 18 9h-1.26A8 8 0 1 0 3 16.3"></path>
+                      <polyline points="16 16 12 12 8 16"></polyline>
+                    </svg>
+                  </div>
+                </Modal.Body>
                 <Modal.Footer>
-                  <Button variant="danger" onClick={handleClose}>
-                    Close
+                  <Button variant="success" onClick={handleSave}>
+                    Enregistrer
                   </Button>
                 </Modal.Footer>
               </Modal>
@@ -94,11 +203,11 @@ function Profil() {
                   <div
                     className="card mb-3"
                     style={{ boxShadow: "5px 5px 5px #173734" }}
-                  >
+                  >{user.map((u) => (
                     <div className="card-body text-center shadow">
                       <img
                         className="rounded-circle mb-3 mt-4"
-                        src={img}
+                        src={u.pfp}
                         width="160"
                         height="200"
                         style={{ width: "170px" }}
@@ -109,11 +218,13 @@ function Profil() {
                           type="button"
                           style={{ backgroundColor: "#173734", color: "white" }}
                           onClick={() => {
-                            handleShow()}}
+                            handleShow();
+                          }}
                         >
                           Changer de photos
                         </button>
                       </div>
+
                       <div className="mb-3">
                         <Link
                           to="/"
@@ -126,6 +237,7 @@ function Profil() {
                         </Link>
                       </div>
                     </div>
+                  ))}
                   </div>
                   <div className="card shadow mb-4">
                     <div className="card-header py-3">
