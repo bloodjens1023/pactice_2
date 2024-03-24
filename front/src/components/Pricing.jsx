@@ -3,6 +3,11 @@ import { useNavigate } from "react-router-dom";
 import "../assets/css/pricing.css";
 import Cookies from "js-cookie";
 import axios from "axios";
+import Modal from "react-bootstrap/Modal";
+import Button from "react-bootstrap/Button";
+import Sidebar from "./SideBar";
+
+
 export default function Pricing() {
   const [abonnement, setAbonnement] = useState();
   const [prixBasique, setPrixBasique] = useState("");
@@ -11,10 +16,13 @@ export default function Pricing() {
   const [isMensuelle, setIsMensuelle] = useState(false);
   const userEmail = Cookies.get("user");
   const navigate = useNavigate();
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+  const [show, setShow] = useState(false);
 
   function updtaeAbonnement(abbInd) {
     // Récupérer l'e-mail stocké dans le cookie
-    
+
     let selectedAbonnement = "";
 
     switch (abbInd) {
@@ -22,13 +30,13 @@ export default function Pricing() {
         selectedAbonnement = "Basique Annuelle";
         break;
       case 2:
-        selectedAbonnement = "Buisness Anunelle";
+        selectedAbonnement = "Premium Anunelle";
         break;
       case 3:
         selectedAbonnement = "Basique Mensuelle";
         break;
       case 4:
-        selectedAbonnement = "Buisness Mensuelle";
+        selectedAbonnement = "Premium Mensuelle";
         break;
       default:
         selectedAbonnement = "";
@@ -42,11 +50,14 @@ export default function Pricing() {
       })
       .then((res) => {
         console.log("Abonnement mis à jour avec succès :", res.data);
-        navigate("/paiement/", 1000);
+        handleShow();
       })
       .catch((error) => {
         console.error("Erreur lors de la mise à jour de l'abonnement :", error);
       });
+  }
+  function redirection(){
+    navigate('/Paiement')
   }
 
   function switchMethodeAnuelle() {
@@ -73,221 +84,255 @@ export default function Pricing() {
   });
 
   return (
-    <div className="container">
-      <div className="text-center">
-        <div className="nav price-tabs" role="tablist">
-          <a
-            className="nav-link active"
-            href="#yearly"
-            role="tab"
-            data-toggle="tab"
-            onClick={() => switchMethodeAnuelle()}
-          >
-            Annuelle
-          </a>
-          <a
-            className="nav-link"
-            href="#monthly"
-            role="tab"
-            data-toggle="tab"
-            onClick={() => switchMethodeMensuelle()}
-          >
-            Mensuelle
-          </a>
+    <>
+      <Modal show={show} onHide={handleClose} style={{ marginTop: "100px" }}>
+        <Modal.Header closeButton>
+        </Modal.Header>
+        <Modal.Body
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+          }}
+        >
+
+<Sidebar/>
+
+        </Modal.Body>
+        <Modal.Footer>
+          <Button variant="success" onClick={redirection}>Acheter</Button>
+        </Modal.Footer>
+      </Modal>
+
+      <div className="container">
+        <div className="text-center">
+          <div className="nav price-tabs" role="tablist">
+            <a
+              className="nav-link active"
+              href="#yearly"
+              role="tab"
+              data-toggle="tab"
+              onClick={() => switchMethodeAnuelle()}
+            >
+              Annuelle
+            </a>
+            <a
+              className="nav-link"
+              href="#monthly"
+              role="tab"
+              data-toggle="tab"
+              onClick={() => switchMethodeMensuelle()}
+            >
+              Mensuelle
+            </a>
+          </div>
         </div>
-      </div>
-      <div className="tab-content wow fadeIn">
-        <div role="tabpanel" className="tab-pane fade show active" id="yearly">
-          <div className="row justify-content-center">
-            <div className="col-md-6 col-lg-4 mb-30">
-              <div className="price-item text-center">
-                <div className="price-top">
-                  <h4>Basic</h4>
-                  <h2 className="mb-0">
-                    {prixBasique.toLocaleString()} <sup>Ar</sup>
-                  </h2>
-                  <span className="text-capitalize">per year</span>
+        <div className="tab-content wow fadeIn">
+          <div
+            role="tabpanel"
+            className="tab-pane fade show active"
+            id="yearly"
+          >
+            <div className="row justify-content-center">
+              <div className="col-md-6 col-lg-4 mb-30">
+                <div
+                  className="price-item text-center"
+                  style={{ height: "638px" }}
+                >
+                  <div className="price-top">
+                    <h4>Basique</h4>
+                    <h2 className="mb-0">
+                      {prixBasique.toLocaleString()} <sup>Ar</sup>
+                    </h2>
+                    <span className="text-capitalize">par an</span>
+                  </div>
+                  <div className="price-content">
+                    <ul className="border-bottom mb-30 mt-md-4 pb-3 text-left">
+                      <li>
+                        <i className="zmdi zmdi-check mr-2"></i>
+                        <span className="c-black">Jusqu'a 7 appareils</span>
+                      </li>
+                      <li>
+                        <i className="zmdi zmdi-check mr-2"></i>
+                        <span className="c-black">Surveillance 24/7</span>
+                      </li>
+                      <li>
+                        <i className="zmdi zmdi-check mr-2"></i>
+                        <span className="c-black">Assistance DinAi</span>
+                      </li>
+                      <li>
+                        <i className="zmdi zmdi-close mr-2"></i>
+                        <span>Disque dur 250go offerte</span>
+                      </li>
+                      <li>
+                        <i className="zmdi zmdi-close mr-2"></i>
+                        <span>Installation offerte</span>
+                      </li>
+                    </ul>
+                    <a
+                      href="#"
+                      className="btn btn-custom btn-light"
+                      style={{
+                        border: "2px solid #1B8EA4",
+                      }}
+                      onClick={() => updtaeAbonnement(1)}
+                    >
+                      Buy now
+                    </a>
+                  </div>
                 </div>
-                <div className="price-content">
-                  <ul className="border-bottom mb-30 mt-md-4 pb-3 text-left">
-                    <li>
-                      <i className="zmdi zmdi-check mr-2"></i>
-                      <span className="c-black">Eget erovtiu faucid</span>
-                    </li>
-                    <li>
-                      <i className="zmdi zmdi-check mr-2"></i>
-                      <span className="c-black">Cras justo odio</span>
-                    </li>
-                    <li>
-                      <i className="zmdi zmdi-check mr-2"></i>
-                      <span className="c-black">Morbi leo risus</span>
-                    </li>
-                    <li>
-                      <i className="zmdi zmdi-close mr-2"></i>
-                      <span>Porta consectetur ac</span>
-                    </li>
-                    <li>
-                      <i className="zmdi zmdi-close mr-2"></i>
-                      <span> Vestibulum at eros</span>
-                    </li>
-                    <li>
-                      <i className="zmdi zmdi-close mr-2"></i>
-                      <span>Adipisci atque beatae</span>
-                    </li>
-                  </ul>
-                  <a
-                    href="#"
-                    className="btn btn-custom btn-light"
-                    style={{
-                      border: "2px solid #1B8EA4",
-                    }}
-                    onClick={() => updtaeAbonnement(1)}
-                  >
-                    Buy now
-                  </a>
+              </div>
+              <div className="col-md-6 col-lg-4 mb-30">
+                <div
+                  className="price-item text-center popular"
+                  style={{ height: "638px" }}
+                >
+                  <div className="price-top">
+                    <h4>Premium</h4>
+                    <h2 className="mb-0">
+                      {prixBuisness.toLocaleString()} <sup>Ar</sup>
+                    </h2>
+                    <span className="text-capitalize">per year</span>
+                  </div>
+                  <div className="price-content">
+                    <ul className="border-bottom mb-30 mt-md-4 pb-3 text-left">
+                      <li>
+                        <i className="zmdi zmdi-check mr-2"></i>
+                        <span className="c-black">Jusqu'a 12 appareils</span>
+                      </li>
+                      <li>
+                        <i className="zmdi zmdi-check mr-2"></i>
+                        <span className="c-black">Surveillance 24/7</span>
+                      </li>
+                      <li>
+                        <i className="zmdi zmdi-check mr-2"></i>
+                        <span className="c-black">
+                          Assistance DinAi v2 Turbo
+                        </span>
+                      </li>
+                      <li>
+                        <i className="zmdi zmdi-close mr-2"></i>
+                        <span>Disque dur 2To offerte</span>
+                      </li>
+                      <li>
+                        <i className="zmdi zmdi-close mr-2"></i>
+                        <span> Installation offerte</span>
+                      </li>
+                      <li>
+                        <i className="zmdi zmdi-close mr-2"></i>
+                        <span>Premier kit offerte</span>
+                      </li>
+                    </ul>
+                    <a
+                      href="#"
+                      className="btn btn-custom btn-light"
+                      onClick={() => updtaeAbonnement(2)}
+                    >
+                      Buy now
+                    </a>
+                  </div>
                 </div>
               </div>
             </div>
-            <div className="col-md-6 col-lg-4 mb-30">
-              <div className="price-item text-center popular">
-                <div className="price-top">
-                  <h4>Business</h4>
-                  <h2 className="mb-0">
-                    {prixBuisness.toLocaleString()} <sup>Ar</sup>
-                  </h2>
-                  <span className="text-capitalize">per year</span>
+          </div>
+          <div role="tabpanel" className="tab-pane fade" id="monthly">
+            <div className="row justify-content-center">
+              <div className="col-md-6 col-lg-4 mb-30">
+                <div
+                  className="price-item text-center"
+                  style={{ height: "638px" }}
+                >
+                  <div className="price-top">
+                    <h4>Basique</h4>
+                    <h2 className="mb-0">
+                      {prixBasique.toLocaleString()} <sup>Ar</sup>
+                    </h2>
+                    <span className="text-capitalize">per month</span>
+                  </div>
+                  <div className="price-content">
+                      <ul className="border-bottom mb-30 mt-md-4 pb-3 text-left">
+                        <li>
+                          <i className="zmdi zmdi-check mr-2"></i>
+                          <span className="c-black">Jusqu'a 7 appareils</span>
+                        </li>
+                        <li>
+                          <i className="zmdi zmdi-check mr-2"></i>
+                          <span className="c-black">Surveillance 24/7</span>
+                        </li>
+                        <li>
+                          <i className="zmdi zmdi-check mr-2"></i>
+                          <span className="c-black">Assistance DinAi</span>
+                        </li>
+                        <li>
+                          <i className="zmdi zmdi-close mr-2"></i>
+                          <span>Disque dur 128go offerte</span>
+                        </li>
+                    </ul>
+                    <a
+                      href="#"
+                      className="btn btn-custom btn-light"
+                      style={{
+                        border: "2px solid #1B8EA4",
+                      }}
+                      onClick={() => updtaeAbonnement(3)}
+                    >
+                      Buy now
+                    </a>
+                  </div>
                 </div>
-                <div className="price-content">
-                  <ul className="border-bottom mb-30 mt-md-4 pb-3 text-left">
-                    <li>
-                      <i className="zmdi zmdi-check mr-2"></i>
-                      <span className="c-black">Eget erovtiu faucid</span>
-                    </li>
-                    <li>
-                      <i className="zmdi zmdi-check mr-2"></i>
-                      <span className="c-black">Cras justo odio</span>
-                    </li>
-                    <li>
-                      <i className="zmdi zmdi-check mr-2"></i>
-                      <span className="c-black">Morbi leo risus</span>
-                    </li>
-                    <li>
-                      <i className="zmdi zmdi-close mr-2"></i>
-                      <span>Porta consectetur ac</span>
-                    </li>
-                    <li>
-                      <i className="zmdi zmdi-close mr-2"></i>
-                      <span> Vestibulum at eros</span>
-                    </li>
-                    <li>
-                      <i className="zmdi zmdi-close mr-2"></i>
-                      <span>Adipisci atque beatae</span>
-                    </li>
-                  </ul>
-                  <a href="#" className="btn btn-custom btn-light" onClick={() => updtaeAbonnement(2)}>
-                    Buy now
-                  </a>
+              </div>
+              <div className="col-md-6 col-lg-4 mb-30">
+                <div
+                  className="price-item text-center popular"
+                  style={{ height: "638px" }}
+                >
+                  <div className="price-top">
+                    <h4>Premium</h4>
+                    <h2 className="mb-0">
+                      {prixBuisness.toLocaleString()} <sup>Ar</sup>
+                    </h2>
+                    <span className="text-capitalize">per month</span>
+                  </div>
+                  <div className="price-content">
+                    <ul className="border-bottom mb-30 mt-md-4 pb-3 text-left">
+                      <li>
+                        <i className="zmdi zmdi-check mr-2"></i>
+                        <span className="c-black">Jusqu'a 12 appareils</span>
+                      </li>
+                      <li>
+                        <i className="zmdi zmdi-check mr-2"></i>
+                        <span className="c-black">Surveillance 24/7</span>
+                      </li>
+                      <li>
+                        <i className="zmdi zmdi-check mr-2"></i>
+                        <span className="c-black">
+                          Assistance DinAi v2 Turbo
+                        </span>
+                      </li>
+                      <li>
+                        <i className="zmdi zmdi-close mr-2"></i>
+                        <span>Disque dur 1To offerte</span>
+                      </li>
+
+                      <li>
+                        <i className="zmdi zmdi-close mr-2"></i>
+                        <span>Premier kit offerte</span>
+                      </li>
+                    </ul>
+                    <a
+                      href="#"
+                      className="btn btn-custom btn-light"
+                      onClick={() => updtaeAbonnement(4)}
+                    >
+                      Buy now
+                    </a>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
-        <div role="tabpanel" className="tab-pane fade" id="monthly">
-          <div className="row justify-content-center">
-            <div className="col-md-6 col-lg-4 mb-30">
-              <div className="price-item text-center">
-                <div className="price-top">
-                  <h4>Personal</h4>
-                  <h2 className="mb-0">
-                    {prixBasique.toLocaleString()} <sup>Ar</sup>
-                  </h2>
-                  <span className="text-capitalize">per month</span>
-                </div>
-                <div className="price-content">
-                  <ul className="border-bottom mb-30 mt-md-4 pb-3 text-left">
-                    <li>
-                      <i className="zmdi zmdi-check mr-2"></i>
-                      <span className="c-black">Eget erovtiu faucid</span>
-                    </li>
-                    <li>
-                      <i className="zmdi zmdi-check mr-2"></i>
-                      <span className="c-black">Cras justo odio</span>
-                    </li>
-                    <li>
-                      <i className="zmdi zmdi-check mr-2"></i>
-                      <span className="c-black">Morbi leo risus</span>
-                    </li>
-                    <li>
-                      <i className="zmdi zmdi-close mr-2"></i>
-                      <span>Porta consectetur ac</span>
-                    </li>
-                    <li>
-                      <i className="zmdi zmdi-close mr-2"></i>
-                      <span> Vestibulum at eros</span>
-                    </li>
-                    <li>
-                      <i className="zmdi zmdi-close mr-2"></i>
-                      <span>Adipisci atque beatae</span>
-                    </li>
-                  </ul>
-                  <a
-                    href="#"
-                    className="btn btn-custom btn-light"
-                    style={{
-                      border: "2px solid #1B8EA4",
-                    }}
-                    onClick={() => updtaeAbonnement(3)}
-                  >
-                    Buy now
-                  </a>
-                </div>
-              </div>
-            </div>
-            <div className="col-md-6 col-lg-4 mb-30">
-              <div className="price-item text-center popular">
-                <div className="price-top">
-                  <h4>Business</h4>
-                  <h2 className="mb-0">
-                    {prixBuisness.toLocaleString()} <sup>Ar</sup>
-                  </h2>
-                  <span className="text-capitalize">per month</span>
-                </div>
-                <div className="price-content">
-                  <ul className="border-bottom mb-30 mt-md-4 pb-3 text-left">
-                    <li>
-                      <i className="zmdi zmdi-check mr-2"></i>
-                      <span className="c-black">Eget erovtiu faucid</span>
-                    </li>
-                    <li>
-                      <i className="zmdi zmdi-check mr-2"></i>
-                      <span className="c-black">Cras justo odio</span>
-                    </li>
-                    <li>
-                      <i className="zmdi zmdi-check mr-2"></i>
-                      <span className="c-black">Morbi leo risus</span>
-                    </li>
-                    <li>
-                      <i className="zmdi zmdi-close mr-2"></i>
-                      <span>Porta consectetur ac</span>
-                    </li>
-                    <li>
-                      <i className="zmdi zmdi-close mr-2"></i>
-                      <span> Vestibulum at eros</span>
-                    </li>
-                    <li>
-                      <i className="zmdi zmdi-close mr-2"></i>
-                      <span>Adipisci atque beatae</span>
-                    </li>
-                  </ul>
-                  <a href="#" className="btn btn-custom btn-light" onClick={() => updtaeAbonnement(4)}>
-                    Buy now
-                  </a>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
       </div>
-    </div>
+    </>
   );
 }
