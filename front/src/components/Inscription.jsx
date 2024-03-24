@@ -73,11 +73,12 @@ function Inscription() {
                 style={{ color: "hsl(218, 81%, 95%)" }}
               >
                 Eye I <br />
-                <span style={{ color: "#04323A" }}>
-                  Ameliorer votre securite
-                </span>
+                <span style={{ color: "white" }}>Ameliorer votre securite</span>
               </h1>
-              <p className="mb-3 opacity-70" style={{ color: "#000000" }}>
+              <p
+                className="mb-3 opacity-70"
+                style={{ color: "white", fontSize: "20px" }}
+              >
                 Afin d'améliorer votre entourage et de la securite votre
                 priorité, il est nécesaire de s'inscrire si vous n'êtes pas
                 encore membre

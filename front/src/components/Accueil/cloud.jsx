@@ -1,6 +1,6 @@
-import Spline from '@splinetool/react-spline';
+import Spline from "@splinetool/react-spline";
 
-export default function App() {
+export default function Cloud() {
   return (
     <Spline scene="https://prod.spline.design/PY4aFEy24JOfnZJ3/scene.splinecode" />
   );

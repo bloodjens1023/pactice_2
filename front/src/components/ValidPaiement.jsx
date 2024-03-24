@@ -8,14 +8,22 @@ function ValidPaiement() {
   useEffect(() => {
     const timer = setTimeout(() => {
       setIsVisible(false);
-    }, 2500);
+    }, 3000);
 
     return () => clearTimeout(timer);
   }, []);
   return (
     <div
-      className="containers"
-      style={{ flex: 1, position: "absolute", top: "40%", left: "0%" }}
+      style={{
+        flex: 1,
+        position: "absolute",
+        top: "40%",
+        left: "0%",
+        width: "97vw",
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+      }}
     >
       <motion.div>
         {isVisible && (

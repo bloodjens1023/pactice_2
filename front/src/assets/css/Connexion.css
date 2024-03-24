@@ -1,5 +1,5 @@
 .background-radial-gradient {
-    background: radial-gradient(#c6f1ed, #774DB3);
+    background: radial-gradient(#010101, #774DB3);
  
   }
   
@@ -10,7 +10,7 @@
     width: 220px;
     top: -60px;
     left: -300px;
-    background: radial-gradient(#E4F1FC, #774DB3);
+    background: radial-gradient(#2b2b2b, #774DB3);
     overflow: hidden;
   }
 
@@ -34,7 +34,7 @@
   
 
   .bg-glass {
-    color: white;
-    background-color: hwb(0 18% 82% / 0.66) !important;
+    color: rgb(0, 0, 0);
+    background-color: hwb(0 100% 0% / 0.66) !important;
     backdrop-filter: saturate(200%) blur(25px);
   }

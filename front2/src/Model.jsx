@@ -20,7 +20,7 @@ export default function Model() {
 
   React.useEffect(() => {
     // Add initial items
-    for (let i = 0; i < 20; i++) {
+    for (let i = 0; i < 10; i++) {
       dispatch({
         type: "ADD_ITEM",
         payload: { item: { ...fruit.coin1, x: 16, y: 1 } },
@@ -100,6 +100,10 @@ export default function Model() {
       dispatch({
         type: "ADD_ITEM",
         payload: { item: { ...fruit.meuble, x: 20, y: 1 } },
+      });
+      dispatch({
+        type: "ADD_ITEM",
+        payload: { item: { ...fruit.lampe, x: 23, y: 3 } },
       });
     }
   }, []);

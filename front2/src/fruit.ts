@@ -147,12 +147,12 @@ export const fruit = {
 		lien:"/src/assets/meuble.JPG"
 	},
 	
-	banana: {
-		id: "banana",
-		name: "Banana",
+	lampe: {
+		id: "lampe",
+		name: "Lampe",
 		width: 1,
-		height: 3,
-		lien:""
+		height: 1,
+		lien:"/src/assets/20.png"
 	},
 	test: {
 		id: "badamena",

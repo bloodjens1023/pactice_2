@@ -3,7 +3,7 @@ import Bento from "./bento.jsx";
 import "./Homepage.css";
 import Splinehero from "./splinehero.jsx";
 import "boxicons";
-function App() {
+function Homepage() {
   return (
     <>
       {" "}
@@ -85,4 +85,4 @@ function App() {
   );
 }
 
-export default App;
+export default Homepage;

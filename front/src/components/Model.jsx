@@ -2,6 +2,7 @@ import axios from "axios";
 import Plan from "./Plan";
 import React, { useState, useEffect } from "react";
 import Models from "./modelisation/Model";
+import { Link } from "react-router-dom";
 
 export default function Model() {
   const [produits, setProduits] = useState([]);
@@ -54,6 +55,26 @@ export default function Model() {
             borderRadius: "20px",
           }}
         />
+        <Link
+          to="/produits"
+          style={{
+            position: "absolute",
+            bottom: "30px",
+            right: "400px",
+            width: "200px",
+            height: "50px",
+            backgroundColor: "rgb(152, 195, 121)",
+            color: "white",
+            fontSize: "20px",
+            textAlign: "center",
+            border: "none",
+            borderRadius: "10px",
+            cursor: "pointer",
+            outline: "none",
+          }}
+        >
+          Valider
+        </Link>
       </div>
     </>
   );
